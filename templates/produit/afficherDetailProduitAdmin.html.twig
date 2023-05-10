@@ -1,0 +1,50 @@
+{% extends 'homeadmin.html.twig' %}
+{% block body %}
+
+ <!-- Order Tracking Seation starts-->
+ <div class="page-body">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="title-header option-title">
+                                    <h5>Details of the product</h5>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 overflow-hidden">
+                                        <div class="order-left-image">
+                                            <div class="tracking-product-image">
+                                                <img src="http://localhost/images/{{p.getImage}}"
+                                                    class="img-fluid w-100 blur-up lazyload" alt="">
+                                            </div>
+
+                                            <div class="order-image-contain">
+                                                <h4>{{p.nom_prod}}</h4>
+                                                <div class="tracker-number">
+                                                    <p>Description Produit : <span>{{p.description_prod}}</span></p>
+                                                    <p>Prix : <span>{{p.prix_prod}} Dt</span></p>
+                                                    <p>Categorie : <span>{{p.categorie.nom_categorie}}</span></p>
+                                                </div>
+                                                <h5>This items is in stock.The Quantity available is {{p.quantite_prod}}.</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer text-end border-0 pb-0 d-flex justify-content-end">
+                                <a href="{{path('updatep',{'id':p.id})}}">  <button class="btn btn-primary me-3">Update</button></a>
+                                <a href="{{path('afficheproduit')}}"> <button class="btn btn-outline">Back</button></a> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+ </div>
+ 
+
+{% endblock %}

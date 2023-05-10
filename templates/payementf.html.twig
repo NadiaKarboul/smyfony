@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from autocare.dexignlab.com/xhtml/login-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 21 Mar 2023 22:23:37 GMT -->
+<head>
+	<!-- META -->
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="keywords" content="" />
+	<meta name="author" content="" />
+	<meta name="robots" content="" />
+	<meta name="description" content="AutoCare is well designed creating websites of automotive repair shops, stores with spare parts and accessories for car repairs, car washes, car danting and panting, service stations, car showrooms painting, major auto centers and other sites related to cars and car services." />
+	<meta property="og:title" content="Auto Care - Car Services Template" />
+	<meta property="og:description" content="AutoCare is well designed creating websites of automotive repair shops, stores with spare parts and accessories for car repairs, car washes, car danting and panting, service stations, car showrooms painting, major auto centers and other sites related to cars and car services." />
+	<meta property="og:image" content="social-image.png" />
+	<meta name="format-detection" content="telephone=no">
+
+	<!-- FAVICONS ICON -->
+	<link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+	<link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" />
+	
+	<!-- PAGE TITLE HERE -->
+	<title>Auto Care - Car Services Template</title>
+	
+	<!-- MOBILE SPECIFIC -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!--[if lt IE 9]>
+		<script src="js/html5shiv.min.js"></script>
+		<script src="js/respond.min.js"></script>
+	<![endif]-->
+		
+	<!-- STYLESHEETS -->
+	<link rel="stylesheet" type="text/css" href="css/style.min.css">
+	<link class="skin"  rel="stylesheet" type="text/css" href="css/skin/skin-1.css">
+	<link rel="stylesheet" type="text/css" href="css/templete.min.css">
+      
+<script src="https://js.stripe.com/v3/"></script>
+<script>
+    var stripe = Stripe('pk_test_51MidOiDi4uLa1UR4RpQkgZL5nvCFeY3bobigYa63HhDQpFyxzW6MGejqi7u9AJkz0xLXW2FyurA8pNshzjubSSEg001mIXZghJ'); // Votre clé publique Stripe
+    var elements = stripe.elements();
+    var cardElement = elements.create('card');
+    cardElement.mount('#card-element');
+    var form = document.getElementById('payment-form');
+    var submitButton = document.getElementById('submit-button');
+    var errorElement = document.getElementById('card-errors');
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+        submitButton.disabled = true;
+        stripe.createToken(cardElement).then(function(result) {
+            submitButton.disabled = false;
+            if (result.error) {
+                errorElement.textContent = result.error.message;
+            } else {
+                // Ajouter le jeton au formulaire de paiement
+                var tokenInput = document.createElement('input');
+                tokenInput.setAttribute('type', 'hidden');
+                tokenInput.setAttribute('name', 'stripeToken');
+                tokenInput.setAttribute('value', result.token.id);
+                form.appendChild(tokenInput);
+                // Soumettre le formulaire de paiement
+                form.submit();
+            }
+        });
+    });
+</script>
+
+</head>
+<body id="bg" class="full-boxed">
+<div id="loading-area"></div>
+<div class="page-wrapers">
+    <div class="page-content dlab-login bg-secondry">
+		<div class="top-head logo-white text-center logo-header">
+			<a href="index.html">
+				<img src="images/logo.png" alt=""/>
+			</a>
+		</div>
+    <div class="login-form">
+        
+           
+                    <form class="p-a30 dlab-form text-center text-center" id="payment-form" action="{{ path('process_payment') }}" method="POST">
+                        <h3 class="form-title m-t0">Alimenter compte</h3>
+                        <div class="dlab-separator-outer m-b5">
+                            <div class="dlab-separator bg-primary style-liner"></div>
+                        </div>
+                        <p>Enter your card details below: </p>
+                        <div class="form-group">
+                            <input type="number" name="amount" placeholder="Montant en euros" required class="form-control" placeholder="ammount" />
+                        </div>
+                        <div class="form-group"></div>
+                        <div id="card-element"><!-- Stripe Card Element --></div>
+                    </div>
+						<div id="card-errors" role="alert"></div>
+                        <div class="form-group text-left "> 
+							<a class="site-button outline gray" data-bs-toggle="tab" href="#login">Back</a>
+                            <button class="site-button float-end" id="submit-button" >Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+		<div class="bottom-footer text-center text-white">
+			<p>2022 © DexignLab - HTML Template. </p>
+		</div>
+	</div>
+</body>
+</html>
+
+    <!-- Content END-->
+</div>
+<!-- JavaScript  files ========================================= -->
+<script src="js/jquery.min.js"></script><!-- JQUERY.MIN JS -->
+<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script><!-- BOOTSTRAP.MIN JS -->
+<script src="plugins/bootstrap-select/bootstrap-select.min.js"></script><!-- FORM JS -->
+<script src="plugins/bootstrap-touchspin/jquery.bootstrap-touchspin.js"></script><!-- FORM JS -->
+<script src="plugins/magnific-popup/magnific-popup.js"></script><!-- MAGNIFIC POPUP JS -->
+<script src="plugins/counter/waypoints-min.js"></script><!-- WAYPOINTS JS -->
+<script src="plugins/counter/counterup.min.js"></script><!-- COUNTERUP JS -->
+<script src="plugins/imagesloaded/imagesloaded.js"></script><!-- IMAGESLOADED -->
+<script src="plugins/masonry/masonry-3.1.4.js"></script><!-- MASONRY -->
+<script src="plugins/masonry/masonry.filter.js"></script><!-- MASONRY -->
+<script src="plugins/owl-carousel/owl.carousel.js"></script><!-- OWL SLIDER -->
+<script src="js/custom.min.js"></script><!-- CUSTOM FUCTIONS  -->
+<script src="js/dz.carousel.min.js"></script><!-- SORTCODE FUCTIONS  -->
+<script src="js/dz.ajax.js"></script><!-- CONTACT JS -->
+<script src="plugins/switcher/js/switcher.js"></script><!-- SWITCHER -->
+
+
+</body>
+
+<!-- Mirrored from autocare.dexignlab.com/xhtml/login-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 21 Mar 2023 22:23:37 GMT -->
+</html>

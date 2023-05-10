@@ -1,0 +1,73 @@
+{% extends 'base-front.html.twig' %}
+{% block titre%}
+<title>Boutique</title>
+{% endblock %}
+{% block body%} 
+<!-- Content -->
+<div class="page-content bg-white">
+    <!-- inner page banner -->
+    <div class="dlab-bnr-inr overlay-black-middle" style="background-image:url(images/background/slide13.jpg);">
+        <div class="container">
+            <div class="dlab-bnr-inr-entry">
+                <h1 class="text-white">Nos Produits</h1>
+            </div>
+        </div>
+    </div>
+    <!-- inner page banner END -->
+    <!-- Breadcrumb row -->
+    <div class="breadcrumb-row">
+        <div class="container">
+            <ul class="list-inline">
+                <li><a href="{{path('resume')}}">Accueil</a></li>
+                <li>Nos Produits</li>
+            </ul>
+        </div>
+    </div>
+    <!-- Breadcrumb row END -->
+</div>
+
+<div class="row justify-content-center">
+    
+    {% for message in app.flashes('error') %}
+    <div class="alert alert-success"> <strong><i class="far fa-thumbs-up"></i> Succès!</strong> {{ message }} </div>
+    {% endfor %}
+    <div class="col-lg-7 align-self-center">
+        <div class="section-title text-center">
+            <h6 class="sub-title double-line"><span></span>  Produits</h6>
+            <h2 class="title">Nos Produits Populaires</h2>
+            <p class="content">D&R est le principal fournisseur tunisien de pièces automobiles et de produits pour les fans et les supporters de Drift ! Avec plus de 250 produits de haute qualité.</p>
+        </div>
+    </div>
+    
+  <!-- contact area -->
+  <div class="section-full content-inner">
+    <!-- Product -->
+    <div class="container">
+        <div class="row">
+            {% for i in p %}
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="item-box m-b10">
+                    <div class="item-img">
+                        <img src="http://localhost/images/{{i.getImage}}" alt=""/>
+                        <div class="item-info-in">
+                            <ul>
+                                <li><a href="#"><i class="ti-shopping-cart"></i></a></li>
+                                <li><a href="{{path('affichedetail',{'id':i.id})}}"><i class="ti-eye"></i></a></li>
+                                <li><a href="#"><i class="ti-heart"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="item-info text-center text-black p-a10">
+                        <h6 class="item-title"><a href="{{path('affichedetail',{'id':i.id})}}">{{i.getNomProd()}}</a></h6>
+                       
+                        
+                        <p class="content">{{i.getDescriptionProd()}}</p>
+                        <h4 class="item-price"><span class="text-primary">{{i.getPrixProd()}} Dt</span></h4>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+  </div>
+{% endblock %}

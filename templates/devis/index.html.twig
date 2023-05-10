@@ -1,0 +1,168 @@
+
+    {% extends 'base-front.html.twig' %}
+{% block body %}
+  
+    <!-- Content -->
+    <div class="page-content">
+        <!-- inner page banner -->
+        <div class="dlab-bnr-inr overlay-black-middle" style="background-image:url(images/background/bg4.jpg);">
+            <div class="container">
+                <div class="dlab-bnr-inr-entry">
+                    <h1 class="text-white">DEVIS</h1>
+                </div>
+            </div>
+        </div>
+        <!-- inner page banner END -->
+        <!-- Breadcrumb row -->
+        <div class="breadcrumb-row">
+            <div class="container">
+                <ul class="list-inline">
+                    <li><a href="index.html">Home</a></li>
+                    <li>Les Devis</li>
+                </ul>
+            </div>
+        </div>
+        <!-- Breadcrumb row END -->
+        <div class="content-area">
+            <!-- content start -->
+            <div class="container">
+                <!-- icon box style 1 aligh center -->
+                <div class="p-a30 bg-white m-b30 p-b0">
+                    <div class="section-head inner-head">
+                        <h2 class="text-uppercase">Les DEVIS</h2>
+                    </div>
+                    <div class="section-content m-b50">
+                        <div class="row">
+                           {% set j = 0 %}
+                          {% for i in d %}
+    
+
+                            <div class="col-lg-3 col-md-6 col-sm-6 m-b30">
+                                <div class="icon-bx-wraper bx-style-1 p-a30 center">
+                                    <div class="icon-bx-sm bg-primary m-b20"> <a href="#" class="icon-cell"><i class="ti-user"></i></a> </div>
+                                    <div class="icon-content">
+                                        <h3 class="dlab-tilte text-uppercase">DEVIS</h3>
+                                        
+                                          <table class="table">
+                <thead>
+                    <tr>
+                        <th>Pannes</th>
+                        <th>Prix (DT)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if i.getMaintenance.isPanneMoteur %}
+                        <tr>
+                            <td>Panne moteur</td>
+                            <td>{{ i.getGarage.getPanneMoteur }}</td>
+                        </tr>
+                    {% endif %}
+                    {% if i.getMaintenance.isFeuDEclairage %}
+                        <tr>
+                            <td>Feu d'éclairage</td>
+                            <td>{{ i.getGarage.getFeuDEclairage }}</td>
+                        </tr>
+                    {% endif %}
+                    {% if i.getMaintenance.isAmortisseur %}
+                        <tr>
+                            <td>Amortisseur</td>
+                            <td>{{ i.getGarage.getAmortisseur }}</td>
+                        </tr>
+                    {% endif %}
+                     {% if i.getMaintenance.isBatterie %}
+                        <tr>
+                            <td>Batterie</td>
+                            <td>{{ i.getGarage.getBatterie }}</td>
+                        </tr>
+                    {% endif %}
+                    {% if i.getMaintenance.isDuride %}
+                        <tr>
+                            <td>Duride</td>
+                            <td>{{ i.getGarage.getDuride }}</td>
+                        </tr>
+                    {% endif %}
+                    {% if i.getMaintenance.isEssuieGlace %}
+                        <tr>
+                            <td>Essuie-glace</td>
+                            <td>{{ i.getGarage.getEssuieGlace }}</td>
+                        </tr>
+                    {% endif %}
+                    {% if i.getMaintenance.isFiltre %}
+                        <tr>
+                            <td>Filtre</td>
+                            <td>{{ i.getGarage.getFiltre }}</td>
+                        </tr>
+                    {% endif %}
+                    {% if i.getMaintenance.isFreinMain %}
+                        <tr>
+                            <td>Frein à main</td>
+                            <td>{{ i.getGarage.getFreinMain }}</td>
+                        </tr>
+                    {% endif %}
+                    {% if i.getMaintenance.isFuiteDHuile %}
+                        <tr>
+                            <td>Fuite d'huile</td>
+                            <td>{{ i.getGarage.getFuiteDHuile }}</td>
+                        </tr>
+                    {% endif %}
+                    {% if i.getMaintenance.isPatin %}
+                        <tr>
+                            <td>Patin</td>
+                            <td>{{ i.getGarage.getPatin }}</td>
+                        </tr>
+                    {% endif %}
+                    {% if i.getMaintenance.isPompeAEau %}
+                        <tr>
+                            <td>Pompe à eau</td>
+                            <td>{{ i.getGarage.getPompeAEau }}</td>
+                        </tr>
+                    {% endif %}
+                    {% if i.getMaintenance.isRadiateur %}
+                        <tr>
+                            <td>Radiateur</td>
+                            <td>{{ i.getGarage.getRadiateur }}</td>
+                        </tr>
+                    {% endif %}
+                    {% if i.getMaintenance.isVentilateur %}
+                        <tr>
+                            <td>Ventilateur</td>
+                            <td>{{ i.getGarage.getVentilateur }}</td>
+                        </tr>
+                         {% endif %}
+                         {% if i.getMaintenance.isVidange %}
+                        <tr>
+                            <td>Vidange</td>
+                            <td> {{ i.getGarage.getVidange }}</td>
+                        </tr>
+                         {% endif %}
+                    </tbody>
+                    </table>
+                                               <h6>TAUX TAXE COMPRIS :  {{ TTC[j] }}</h6>
+                                         
+                                         <h6>SOMME APRES REDUCTION : {{ i.getTotal }}</h6>
+                                               <h6>NOM DU GARAGES : {{i.getGarage.getNomGarage}}</h6>
+                                            {% set j = j + 1 %}
+                                            <a>
+                    <form action="{{path('email',{'id':i.getId})}}"> <button>CONFIRMER</button> </form>
+                                                                </a>
+                                    </div>
+                                </div>
+                            </div>
+                                  
+                            {% endfor %}
+                            
+                           
+                        </div>
+                    </div>
+                </div>
+                <!-- icon box style 1 aligh center END -->
+                
+                
+                
+            </div>
+        </div>
+    </div>
+    <!-- Content END-->
+    
+    
+                {% endblock %}

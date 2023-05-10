@@ -1,0 +1,162 @@
+{% extends "homeadmin.html.twig" %}
+{% block body %}
+	<div
+		class="page-body">
+		<!-- Table Start -->
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="card card-table">
+						<div class="card-body">
+							<div class="title-header option-title">
+								<h5>Bonplan List</h5>
+								<a href="{{ path('admin_add_Bonplan') }}" class="btn btn-solid">Add BonPlan</a>
+							</div>
+							<div>
+								<div class="table-responsive">
+									<table class="table all-package order-table theme-table" id="table_id">
+										<thead>
+											<tr>
+												<th>Image</th>
+												<th>Name</th>
+												<th>Type</th>
+												<th>Gouvernorat</th>
+												<th>Status</th>
+												<th>City</th>
+												<th>Action</th>
+											</tr>
+										</thead>
+
+										<tbody>
+											{% for item in allBonplan %}
+												<tr data-bs-toggle="offcanvas">
+													<td>
+														<a class="d-block">
+															<span class="order-image">
+																<img src="http://localhost/images/{{item.getImage()}}" class="img-fluid" alt="users">
+															</span>
+														</a>
+													</td>
+
+													<td>{{ item.getNomBonplan()}}</td>
+
+													<td>{{ item.getType()}}</td>
+
+													<td>{{ item.getGouvernorat()}}</td>
+													{% if item.getEtat() == "accepté" %}
+														<td class="order-success">
+														{% else %}
+															<td class="order-pending">
+															{% endif %}
+															<span>{{ item.getEtat() }}</span>
+														</td>
+
+														<td>{{ item.getVille() }}</td>
+
+														<td>
+															<ul>
+																{# <li><a data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+                                        ><i class="ri-eye-line"></i></a></li> #}
+
+																<li><a href="{{path('updateBonplan',{'id':item.getId()})}}"><i class="ri-pencil-line"></i></a></li>
+
+																<li><a class='deleteBonPlan' href="{{path('admin_delete_Bonplan',{'id':item.getId()})}}" ><i class="ri-delete-bin-line"></i></a></li>
+																<li><a class="btn btn-sm btn-solid text-white" href="{{path('admin_validate_Bonplan',{'id':item.getId()})}}">Validate</a></li>
+															</ul>
+															{# onclick="return confirm('Are you sure you want to delete this bonPlan?')" #}
+														</td>
+													</tr>
+												{% endfor %}
+											</tbody>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Table End -->
+
+		
+	</div>
+	<!-- Order section End -->
+</div>{% endblock %}
+{% block modal %}
+    <!-- Delete Modal Box Start -->
+    <div class="modal fade theme-modal remove-coupon" id="exampleModalToggle" aria-hidden="true" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header d-block text-center">
+                    <h5 class="modal-title w-100" id="exampleModalLabel22">Are You Sure ?</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="remove-box">
+                        <p>Are you sure you want to delete this  !</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-animation btn-md fw-bold" data-bs-dismiss="modal">No</button>
+                    <button type="button" class="btn btn-animation btn-md fw-bold btn--yes" data-bs-target="#exampleModalToggle2"
+                        data-bs-toggle="modal" data-bs-dismiss="modal">Yes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade theme-modal remove-coupon" id="exampleModalToggle2" aria-hidden="true" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-center" id="exampleModalLabel12">Done!</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="remove-box text-center">
+                        <div class="wrapper">
+                            <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                                <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none" />
+                                <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
+                            </svg>
+                        </div>
+                        <h4 class="text-content">It's Removed.</h4>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block script %}
+<script>
+  
+
+	const deleteLinks = document.querySelectorAll('.deleteBonPlan');
+
+deleteLinks.forEach(deleteLink => {
+    deleteLink.addEventListener('click', event => {
+        event.preventDefault();
+        
+        const deleteConfirmBtn = document.querySelector('.btn--yes');
+        //const deleteModal = document.querySelector('#deleteModal');
+        
+        deleteConfirmBtn.addEventListener('click', () => {
+            window.location.href = deleteLink.getAttribute('href');
+        });
+        
+       
+    });
+});
+    
+    </script>
+{% endblock %}

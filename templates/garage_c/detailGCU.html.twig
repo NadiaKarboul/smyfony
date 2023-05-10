@@ -1,0 +1,368 @@
+{% extends 'front.html.twig' %}
+{% block body %}
+
+    
+    <!-- Content -->
+    <div class="page-content bg-white">
+        <!-- inner page banner -->
+         <!-- inner page banner -->
+        <div class="dlab-bnr-inr overlay-black-middle" style="background-image:url(../images/background/bg4.jpg);">
+            <div class="container">
+                <div class="dlab-bnr-inr-entry">
+                    <h1 class="text-white"> {{g.getNomGarage}}</h1>
+                </div>
+            </div>
+        </div>
+        <!-- inner page banner END -->
+        <!-- inner page banner END -->
+        <!-- Breadcrumb row -->
+        <div class="breadcrumb-row">
+            <div class="container">
+                <ul class="list-inline">
+                    <li><a href="#">Home</a></li>
+                    <li>Garage</li>
+                </ul>
+            </div>
+        </div>
+        <!-- Breadcrumb row END -->
+        <!-- contact area -->
+        <div class="section-full content-inner bg-white">
+            <!-- Product details -->
+            <div class="container woo-entry">
+                <div class="row m-b30">
+					<div class="col-lg-5 col-md-5">
+						<div class="product-gallery on-show-slider"> 
+							<div id="sync1" class="owl-carousel owl-theme owl-btn-center-lr m-b5 owl-btn-1 primary">
+								
+								<div class="item">
+									<div class="mfp-gallery">
+										<div class="dlab-box">
+											<div class="dlab-thum-bx dlab-img-overlay1 ">
+												<img src="http://localhost/images/{{g.getImage}}" alt="">
+												<div class="overlay-bx">
+													<div class="overlay-icon">
+														<a class="mfp-link" title="Product Name" href="http://localhost/images/{{g.getImage}}">
+                                                         
+															<i class="ti-fullscreen"></i>
+														</a>
+												  </div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+							
+						</div>
+					</div>
+					<div class="col-lg-7 col-md-7">
+						<div class="sticky-top">
+							<form method="post" class="cart">
+								<div class="dlab-post-title ">
+									<h2 class="post-title"><a>{{g.getNomGarage}}</a></h2>
+									<div class="tracker-number">
+                                                                <p>Adresse : <span>{{g.getAdresse}}</span></p>
+                                                                <p>Numero: <span>{{g.getNumero}}</span></p>
+                                                                <p>taux de reduction: <span>{{g.getTauxDeReduction}}</span></p>
+                                                            </div>
+								</div>
+								
+								 <div class="col-12 overflow-visible">
+                                                    <div class="tracker-table">
+                                                        <div class="table-responsive">
+                                                            <table class="table">
+                                                                <thead>
+                                                                    <tr class="table-head">
+                                                                        <th scope="col">Pannes</th>
+                                                                        <th scope="col">Prix</th>
+                                                                       
+                                                                    </tr>
+                                                                </thead>
+
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <h6>panne_moteur</h6>
+                                                                        </td>
+                                                                        <td>
+                                                                            <h6> {{g.getPanneMoteur}}</h6>
+                                                                        </td>
+                                                                        
+                                                                    </tr>
+
+                                                                    <tr>
+                                                                        <td>
+                                                                            <h6>Pompe A Eau</h6>
+                                                                        </td>
+                                                                        <td>
+                                                                            <h6> {{g.getPompeAEau}}</h6>
+                                                                        </td>
+                                                                       
+                                                                    </tr>
+
+                                                                    <tr>
+                                                                        <td>
+                                                                            <h6>Patin</h6>
+                                                                        </td>
+                                                                        <td>
+                                                                            <h6>{{g.getPatin}}</h6>
+                                                                        </td>
+                                                                        
+                                                                    </tr>
+
+                                                                    <tr>
+                                                                        <td>
+                                                                            <h6>Essuie Glace</h6>
+                                                                        </td>
+                                                                        <td>
+                                                                            <h6>{{g.getEssuieGlace}}</h6>
+                                                                        </td>
+                                                                       
+                                                                    </tr>
+
+                                                                    <tr>
+                                                                        <td>
+                                                                            <h6>Radiateur</h6>
+                                                                        </td>
+                                                                        <td>
+                                                                            <h6>{{g.getRadiateur}}</h6>
+                                                                        </td>
+                                                                        
+                                                                    </tr>
+
+                                                                    <tr>
+                                                                        <td>
+                                                                            <h6>Ventilateur</h6>
+                                                                        </td>
+                                                                        <td>
+                                                                            <h6> {{g.getVentilateur}}</h6>
+                                                                        </td>
+                                                                        
+                                                                    </tr>
+
+                                                                    <tr>
+                                                                        <td>
+                                                                            <h6>Duride</h6>
+                                                                        </td>
+                                                                        <td>
+                                                                            <h6> {{g.getDuride}}</h6>
+                                                                        </td>
+                                                                        
+                                                                    </tr>
+
+                                                                    <tr>
+                                                                        <td>
+                                                                            <h6>Fuite D'Huile</h6>
+                                                                        </td>
+                                                                        <td>
+                                                                            <h6> {{g.getFuiteDHuile}}</h6>
+                                                                        </td>
+                                                                        
+                                                                    </tr>
+
+                                                                    <tr>
+                                                                        <td>
+                                                                            <h6>Vidange</h6>
+                                                                        </td>
+                                                                        <td>
+                                                                            <h6> {{g.getVidange}}</h6>
+                                                                        </td>
+                                                                        
+                                                                    </tr>
+
+                                                                    <tr>
+                                                                        <td>
+                                                                            <h6>Filtre</h6>
+                                                                        </td>
+                                                                        <td>
+                                                                            <h6> {{g.getFiltre}}</h6>
+                                                                        </td>
+                                                                        
+                                                                    </tr>
+
+                                                                    <tr>
+                                                                        <td>
+                                                                            <h6>Batterie</h6>
+                                                                        </td>
+                                                                        <td>
+                                                                            <h6>{{g.getBatterie}}</h6>
+                                                                        </td>
+                                                                        
+                                                                    </tr>
+
+                                                                    <tr>
+                                                                        <td>
+                                                                            <h6>Amortisseur</h6>
+                                                                        </td>
+                                                                        <td>
+                                                                            <h6>  {{g.getAmortisseur}}</h6>
+                                                                        </td>
+                                                                        
+                                                                    </tr>
+
+                                                                    <tr>
+                                                                        <td>
+                                                                            <h6>Frein Main</h6>
+                                                                        </td>
+                                                                        <td>
+                                                                            <h6>  {{g.getFreinMain}}</h6>
+                                                                        </td>
+                                                                        
+                                                                    </tr>
+
+                                                                    <tr>
+                                                                        <td>
+                                                                            <h6>Feu D'Eclairage</h6>
+                                                                        </td>
+                                                                        <td>
+                                                                            <h6> {{g.getFeuDEclairage}}</h6>
+                                                                        </td>
+                                                                        
+                                                                    </tr>
+
+                                                                
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+								
+								
+                            </form>
+						</div>
+					</div>
+                </div>
+                
+			</div>
+            <!-- Product details -->
+        </div>
+        <!-- contact area  END -->
+		
+    </div>
+    <!-- Content END-->
+
+<script src="{{asset('js/jquery.min.js')}}"></script><!-- JQUERY.MIN JS -->
+<script src="{{asset('plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script><!-- BOOTSTRAP.MIN JS -->
+<script src="{{asset('plugins/bootstrap-select/bootstrap-select.min.js')}}"></script><!-- FORM JS -->
+<script src="{{asset('plugins/bootstrap-touchspin/jquery.bootstrap-touchspin.js')}}"></script><!-- FORM JS -->
+<script src="{{asset('plugins/magnific-popup/magnific-popup.js')}}"></script><!-- MAGNIFIC POPUP JS -->
+<script src="{{asset('plugins/counter/waypoints-min.js')}}"></script><!-- WAYPOINTS JS -->
+<script src="{{asset('plugins/counter/counterup.min.js')}}"></script><!-- COUNTERUP JS -->
+<script src="{{asset('plugins/imagesloaded/imagesloaded.js')}}"></script><!-- IMAGESLOADED -->
+<script src="{{asset('plugins/masonry/masonry-3.1.4.js')}}"></script><!-- MASONRY -->
+<script src="{{asset('plugins/masonry/masonry.filter.js')}}"></script><!-- MASONRY -->
+<script src="{{asset('plugins/owl-carousel/owl.carousel.js')}}"></script><!-- OWL SLIDER -->
+<script src="{{asset('plugins/rangeslider/rangeslider.js')}}" ></script><!-- Rangeslider -->
+<script src="{{asset('js/custom.min.js')}}"></script><!-- CUSTOM FUCTIONS  -->
+<script src="{{asset('js/dz.carousel.min.js')}}"></script><!-- SORTCODE FUCTIONS  -->
+
+<script src="{{asset('plugins/lightgallery/js/lightgallery-all.js')}}"></script><!-- LIGHT GALLERY -->
+<script src="{{asset('js/dz.ajax.js')}}"></script><!-- CONTACT JS -->
+<script src="{{asset('plugins/switcher/js/switcher.js')}}"></script><!-- SWITCHER -->
+<!-- REVOLUTION JS FILES -->
+<script src="{{asset('plugins/revolution/js/jquery.themepunch.tools.min.js')}}"></script>
+<script src="{{asset('plugins/revolution/js/jquery.themepunch.revolution.min.js')}}"></script>
+<!-- Slider revolution 5.0 Extensions  (Load Extensions only on Local File Systems !  The following part can be removed on Server for On Demand Loading) -->
+<script src="{{asset('plugins/revolution/js/extensions/revolution.extension.actions.min.js')}}"></script>
+<script src="{{asset('plugins/revolution/js/extensions/revolution.extension.carousel.min.js')}}"></script>
+<script src="{{asset('plugins/revolution/js/extensions/revolution.extension.kenburn.min.js')}}"></script>
+<script src="{{asset('plugins/revolution/js/extensions/revolution.extension.layeranimation.min.js')}}"></script>
+<script src="{{asset('plugins/revolution/js/extensions/revolution.extension.migration.min.js')}}"></script>
+<script src="{{asset('plugins/revolution/js/extensions/revolution.extension.navigation.min.js')}}"></script>
+<script src="{{asset('plugins/revolution/js/extensions/revolution.extension.parallax.min.js')}}"></script>
+<script src="{{asset('plugins/revolution/js/extensions/revolution.extension.slideanims.min.js')}}"></script>
+<script src="{{asset('plugins/revolution/js/extensions/revolution.extension.video.min.js')}}"></script>
+<script src="{{asset('js/rev.slider.js')}}"></script>
+<script>
+jQuery(document).ready(function() {
+	'use strict';
+	dz_rev_slider_4();
+});	/*ready*/
+
+    $(document).ready(function() {
+    
+      var sync1 = $("#sync1");
+      var sync2 = $("#sync2");
+      var slidesPerPage = 4; //globaly define number of elements per page
+      var syncedSecondary = true;
+    
+          sync1.owlCarousel({
+            items : 1,
+            slideSpeed : 2000,
+            nav: true,
+            autoplay: false,
+            dots: false,
+            loop: true,
+            responsiveRefreshRate : 200,
+            navText: ['<i class="fas fa-chevron-left"></i>', '<i class="fas fa-chevron-right"></i>'],
+          }).on('changed.owl.carousel', syncPosition);
+    
+          sync2.on('initialized.owl.carousel', function () {
+              sync2.find(".owl-item").eq(0).addClass("current");
+            }).owlCarousel({
+            items : slidesPerPage,
+            dots: false,
+            nav: false,
+            margin:5,
+            smartSpeed: 200,
+            slideSpeed : 500,
+            slideBy: slidesPerPage, //alternatively you can slide by 1, this way the active slide will stick to the first item in the second carousel
+            responsiveRefreshRate : 100
+          }).on('changed.owl.carousel', syncPosition2);
+    
+      function syncPosition(el) {
+        //if you set loop to false, you have to restore this next line
+        //var current = el.item.index;
+        
+        //if you disable loop you have to comment this block
+        var count = el.item.count-1;
+        var current = Math.round(el.item.index - (el.item.count/2) - .5);
+        
+        if(current < 0) {
+          current = count;
+        }
+        if(current > count) {
+          current = 0;
+        }
+        
+        //end block
+    
+        sync2
+          .find(".owl-item")
+          .removeClass("current")
+          .eq(current)
+          .addClass("current");
+        var onscreen = sync2.find('.owl-item.active').length - 1;
+        var start = sync2.find('.owl-item.active').first().index();
+        var end = sync2.find('.owl-item.active').last().index();
+        
+        if (current > end) {
+          sync2.data('owl.carousel').to(current, 100, true);
+        }
+        if (current < start) {
+          sync2.data('owl.carousel').to(current - onscreen, 100, true);
+        }
+      }
+      
+      function syncPosition2(el) {
+        if(syncedSecondary) {
+          var number = el.item.index;
+          sync1.data('owl.carousel').to(number, 100, true);
+        }
+      }
+      
+      sync2.on("click", ".owl-item", function(e){
+            e.preventDefault();
+            var number = $(this).index();
+            //sync1.data('owl.carousel').to(number, 300, true);
+            
+            sync1.data('owl.carousel').to(number, 300, true);
+            
+        });
+    });
+    </script>
+
+
+
+     {% endblock %}

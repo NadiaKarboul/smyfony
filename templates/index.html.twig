@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+{% block head %}
+<!-- Mirrored from themes.pixelstrap.com/fastkart/back-end/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 22 Mar 2023 08:51:32 GMT -->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Fastkart admin is super flexible, powerful, clean &amp; modern responsive bootstrap 5 admin template with unlimited possibilities.">
+    <meta name="keywords"
+        content="admin template, Fastkart admin template, dashboard template, flat admin template, responsive admin template, web app">
+    <meta name="author" content="pixelstrap">
+    <link rel="icon" href="{{asset('assets/images/favicon.png')}}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{asset('assets/images/favicon.png')}}" type="image/x-icon">
+    <title>DR - Dashboard</title>
+
+
+    <!-- Google font-->
+    <link
+        href="{{asset('https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap')}}"
+        rel="stylesheet">
+
+    <!-- Linear Icon css -->
+    <link rel="stylesheet" href="{{asset('assets/css/linearicon.css')}}">
+
+    <!-- fontawesome css -->
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/font-awesome.css')}}">
+
+    <!-- Themify icon css-->
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/themify.css')}}">
+
+    <!-- ratio css -->
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/ratio.css')}}">
+
+    <!-- remixicon css -->
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/remixicon.css')}}">
+
+    <!-- Feather icon css-->
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/feather-icon.css')}}">
+
+    <!-- Plugins css -->
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/scrollbar.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/animate.css')}}">
+
+    <!-- Bootstrap css-->
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/bootstrap.css')}}">
+
+    <!-- vector map css -->
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/vector-map.css')}}">
+
+    <!-- Slick Slider Css -->
+    <link rel="stylesheet" href="{{asset('assets/css/vendors/slick.css')}}">
+
+    <!-- App css -->
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/style.css')}}">
+</head>
+{% endblock %}
+
+<body>
+   
+    <!-- tap on top start -->
+    <div class="tap-top">
+        <span class="lnr lnr-chevron-up"></span>
+    </div>
+    <!-- tap on tap end -->
+
+    <!-- page-wrapper Start-->
+    <div class="page-wrapper compact-wrapper" id="pageWrapper">
+        <!-- Page Header Start-->
+        <div class="page-header">
+            <div class="header-wrapper m-0">
+                <div class="header-logo-wrapper p-0">
+                    <div class="logo-wrapper">
+                        <a href="index.html">
+                            <img class="img-fluid main-logo" src="{{asset('assets/images/logo/1.png')}}" alt="logo">
+                            <img class="img-fluid white-logo" src="{{asset('assets/images/logo/1-white.png')}}" alt="logo">
+                        </a>
+                    </div>
+                    <div class="toggle-sidebar">
+                        <i class="status_toggle middle sidebar-toggle" data-feather="align-center"></i>
+                        <a href="index.html">
+                            <img src="{{asset('assets/images/logo/1.png')}}" class="img-fluid" alt="">
+                        </a>
+                    </div>
+                </div>
+
+                
+                <div class="nav-right col-6 pull-right right-header p-0">
+                    <ul class="nav-menus">
+                        <li>
+                            <span class="header-search">
+                                <i class="ri-search-line"></i>
+                            </span>
+                        </li>
+                        <li class="onhover-dropdown">
+                            <div class="notification-box">
+                                <i class="ri-notification-line"></i>
+                                <span class="badge rounded-pill badge-theme">4</span>
+                            </div>
+                            <ul class="notification-dropdown onhover-show-div">
+                                <li>
+                                    <i class="ri-notification-line"></i>
+                                    <h6 class="f-18 mb-0">Notitications</h6>
+                                </li>
+                                <li>
+                                    <p>
+                                        <i class="fa fa-circle me-2 font-primary"></i>Delivery processing <span
+                                            class="pull-right">10 min.</span>
+                                    </p>
+                                </li>
+                                <li>
+                                    <p>
+                                        <i class="fa fa-circle me-2 font-success"></i>Order Complete<span
+                                            class="pull-right">1 hr</span>
+                                    </p>
+                                </li>
+                                <li>
+                                    <p>
+                                        <i class="fa fa-circle me-2 font-info"></i>Tickets Generated<span
+                                            class="pull-right">3 hr</span>
+                                    </p>
+                                </li>
+                                <li>
+                                    <p>
+                                        <i class="fa fa-circle me-2 font-danger"></i>Delivery Complete<span
+                                            class="pull-right">6 hr</span>
+                                    </p>
+                                </li>
+                                <li>
+                                    <a class="btn btn-primary" href="javascript:void(0)">Check all notification</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <div class="mode">
+                                <i class="ri-moon-line"></i>
+                            </div>
+                        </li>
+                        <li class="profile-nav onhover-dropdown pe-0 me-0">
+                            <div class="media profile-media">
+                                <img class="user-profile rounded-circle" src="{{asset('assets/images/logo/dr.png')}}" alt="">
+                                <div class="user-name-hide media-body">
+                                    <span>{{user.nom}}</span>
+                                    <p class="mb-0 font-roboto">Admin<i class="middle ri-arrow-down-s-line"></i></p>
+                                </div>
+                            </div>
+                            <ul class="profile-dropdown onhover-show-div">
+                                <li>
+                                    <a href="all-users.html">
+                                        <i data-feather="users"></i>
+                                        <span>Users</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="order-list.html">
+                                        <i data-feather="archive"></i>
+                                        <span>Orders</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="support-ticket.html">
+                                        <i data-feather="phone"></i>
+                                        <span>Spports Tickets</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="profile-setting.html">
+                                        <i data-feather="settings"></i>
+                                        <span>Settings</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a  data-bs-target="#staticBackdrop"
+                                       href="{{ path('app_logout') }}">
+                                        <i data-feather="log-out"></i>
+                                        <span>Log out</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- Page Header Ends-->
+
+        <!-- Page Body Start-->
+        <div class="page-body-wrapper">
+            <!-- Page Sidebar Start-->
+            <div class="sidebar-wrapper">
+                <div id="sidebarEffect"></div>
+                <div>
+                    <div class="logo-wrapper logo-wrapper-center">
+                        <a href="/index" data-bs-original-title="" title="">
+                            <img class="img-fluid for-white" src="{{asset('assets/images/logo/dr.png')}}" alt="logo">
+                        </a>
+                        <div class="back-btn">
+                            <i class="fa fa-angle-left"></i>
+                        </div>
+                        <div class="toggle-sidebar">
+                            <i class="ri-apps-line status_toggle middle sidebar-toggle"></i>
+                        </div>
+                    </div>
+                    <div class="logo-icon-wrapper">
+                        <a href="index.html">
+                            <img class="img-fluid main-logo main-white" src="{{asset('assets/images/logo/logo.png')}}" alt="logo">
+                            <img class="img-fluid main-logo main-dark" src="{{asset('assets/images/logo/logo-white.png')}}"
+                                alt="logo">
+                        </a>
+                    </div>
+                    <nav class="sidebar-main">
+                        <div class="left-arrow" id="left-arrow">
+                            <i data-feather="arrow-left"></i>
+                        </div>
+
+                        <div id="sidebar-menu">
+                            <ul class="sidebar-links" id="simple-bar">
+                            <br>
+                            <br>
+                                <li class="back-btn"></li>
+
+                                <li class="sidebar-list">
+                                    <a class="sidebar-link sidebar-title link-nav" href="/adm">
+                                        <i class="ri-home-line"></i>
+                                        <span>Dashboard</span>
+                                    </a>
+                                </li>
+
+                                <li class="sidebar-list">
+                                    <a class="linear-icon-link sidebar-link sidebar-title" href="javascript:void(0)">
+                                        <i class="ri-store-3-line"></i>
+                                        <span>Garages</span>
+                                    </a>
+                                    <ul class="sidebar-submenu">
+                                        <li>
+                                            <a href="/afficheGC">les Garages</a>
+                                        </li>
+
+                                        <li>
+                                            <a href="/ajouterGC">Ajouter Garage</a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li class="sidebar-list">
+                                    <a class="linear-icon-link sidebar-link sidebar-title" href="javascript:void(0)">
+                                        <i class="ri-list-check-2"></i>
+                                        <span>Maintenance</span>
+                                    </a>
+                                    <ul class="sidebar-submenu">
+                                        <li>
+                                            <a href="/afficheM">les demandes</a>
+                                        </li>
+
+                                    </ul>
+                                </li>
+
+                               
+
+                                <li class="sidebar-list">
+                                    <a class="sidebar-link sidebar-title" href="javascript:void(0)">
+                                        <i class="ri-user-3-line"></i>
+                                        <span>Users</span>
+                                    </a>
+                                    <ul class="sidebar-submenu">
+                                        <li>
+                                            <a href="/admin/users_list">All users</a>
+                                        </li>
+                                        
+                                    </ul>
+                                </li>
+
+
+                                <li class="sidebar-list">
+                                    <a class="sidebar-link sidebar-title" href="javascript:void(0)">
+                                        <i class="ri-archive-line"></i>
+                                        <span>Produits</span>
+                                    </a>
+                                    <ul class="sidebar-submenu">
+                                        <li>
+                                            <a href="#">Order List</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Order Detail</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Order Tracking</a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                               
+
+                                <li class="sidebar-list">
+                                    <a class="linear-icon-link sidebar-link sidebar-title" href="javascript:void(0)">
+                                        <i class="ri-price-tag-3-line"></i>
+                                        <span>Evenements</span>
+                                    </a>
+                                    <ul class="sidebar-submenu">
+                                        <li>
+                                            <a href="#">event List</a>
+                                        </li>
+
+                                        <li>
+                                            <a href="#">Create event</a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                
+                                <li class="sidebar-list">
+                                    <a class="sidebar-link sidebar-title link-nav" href="#">
+                                        <i class="ri-star-line"></i>
+                                        <span>Product Review</span>
+                                    </a>
+                                </li>
+
+                                <li class="sidebar-list">
+                                    <a class="sidebar-link sidebar-title link-nav" href="#">
+                                        <i class="ri-phone-line"></i>
+                                        <span>Support Ticket</span>
+                                    </a>
+                                </li>
+
+                                <li class="sidebar-list">
+                                    <a class="linear-icon-link sidebar-link sidebar-title" href="javascript:void(0)">
+                                        <i class="ri-settings-line"></i>
+                                        <span>Settings</span>
+                                    </a>
+                                    <ul class="sidebar-submenu">
+                                        <li>
+                                            <a href="#">Profile Setting</a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                            </ul>
+                        </div>
+
+                        <div class="right-arrow" id="right-arrow">
+                            <i data-feather="arrow-right"></i>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+            <!-- Page Sidebar Ends-->
+  {% block body %}
+            <!-- index body start -->
+            <div class="page-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <!-- chart caard section start -->
+                        <div class="col-sm-6 col-xxl-3 col-lg-6">
+                            <div class="main-tiles border-5 border-0  card-hover card o-hidden">
+                                <div class="custome-1-bg b-r-4 card-body">
+                                    <div class="media align-items-center static-top-widget">
+                                        <div class="media-body p-0">
+                                            <span class="m-0">Total Revenue</span>
+                                            <h4 class="mb-0 counter">$6659
+                                                <span class="badge badge-light-primary grow">
+                                                    <i data-feather="trending-up"></i>8.5%</span>
+                                            </h4>
+                                        </div>
+                                        <div class="align-self-center text-center">
+                                            <i class="ri-database-2-line"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-xxl-3 col-lg-6">
+                            <div class="main-tiles border-5 card-hover border-0 card o-hidden">
+                                <div class="custome-2-bg b-r-4 card-body">
+                                    <div class="media static-top-widget">
+                                        <div class="media-body p-0">
+                                            <span class="m-0">Total Orders</span>
+                                            <h4 class="mb-0 counter">9856
+                                                <span class="badge badge-light-danger grow">
+                                                    <i data-feather="trending-down"></i>8.5%</span>
+                                            </h4>
+                                        </div>
+                                        <div class="align-self-center text-center">
+                                            <i class="ri-shopping-bag-3-line"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-xxl-3 col-lg-6">
+                            <div class="main-tiles border-5 card-hover border-0  card o-hidden">
+                                <div class="custome-3-bg b-r-4 card-body">
+                                    <div class="media static-top-widget">
+                                        <div class="media-body p-0">
+                                            <span class="m-0">Total Products</span>
+                                            <h4 class="mb-0 counter">893
+                                                <a href="add-new-product.html" class="badge badge-light-secondary grow">
+                                                    ADD NEW</a>
+                                            </h4>
+                                        </div>
+
+                                        <div class="align-self-center text-center">
+                                            <i class="ri-chat-3-line"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-xxl-3 col-lg-6">
+                            <div class="main-tiles border-5 card-hover border-0 card o-hidden">
+                                <div class="custome-4-bg b-r-4 card-body">
+                                    <div class="media static-top-widget">
+                                        <div class="media-body p-0">
+                                            <span class="m-0">Total Customers</span>
+                                            <h4 class="mb-0 counter">4.6k
+                                                <span class="badge badge-light-success grow">
+                                                    <i data-feather="trending-down"></i>8.5%</span>
+                                            </h4>
+                                        </div>
+
+                                        <div class="align-self-center text-center">
+                                            <i class="ri-user-add-line"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <div class="card o-hidden card-hover">
+                                <div class="card-header border-0 pb-1">
+                                    <div class="card-header-title p-0">
+                                        <h4>Category</h4>
+                                    </div>
+                                </div>
+                                <div class="card-body p-0">
+                                    <div class="category-slider no-arrow">
+                                        <div>
+                                            <div class="dashboard-category">
+                                                <a href="javascript:void(0)" class="category-image">
+                                                    <img src="{{asset('assets/svg/vegetable.svg')}}" class="img-fluid" alt="">
+                                                </a>
+                                                <a href="javascript:void(0)" class="category-name">
+                                                    <h6>Vegetables & Fruit</h6>
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <div class="dashboard-category">
+                                                <a href="javascript:void(0)" class="category-image">
+                                                    <img src="{{asset('assets/svg/cup.svg')}}" class="img-fluid" alt="">
+                                                </a>
+                                                <a href="javascript:void(0)" class="category-name">
+                                                    <h6>Beverages</h6>
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <div class="dashboard-category">
+                                                <a href="javascript:void(0)" class="category-image">
+                                                    <img src="{{asset('assets/svg/meats.svg')}}" class="img-fluid" alt="">
+                                                </a>
+                                                <a href="javascript:void(0)" class="category-name">
+                                                    <h6>Meats & Seafood</h6>
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <div class="dashboard-category">
+                                                <a href="javascript:void(0)" class="category-image">
+                                                    <img src="{{asset('assets/svg/breakfast.svg')}}" class="img-fluid" alt="">
+                                                </a>
+                                                <a href="javascript:void(0)" class="category-name">
+                                                    <h6>Breakfast</h6>
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <div class="dashboard-category">
+                                                <a href="javascript:void(0)" class="category-image">
+                                                    <img src="{{asset('assets/svg/frozen.svg')}}" class="img-fluid" alt="">
+                                                </a
+                                                <a href="javascript:void(0)" class="category-name">
+                                                    <h6>Frozen Foods</h6>
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <div class="dashboard-category">
+                                                <a href="javascript:void(0)" class="category-image">
+                                                    <img src="{{asset('assets/svg/milk.svg')}}" class="img-fluid" alt="">
+                                                </a>
+                                                <a href="javascript:void(0)" class="category-name">
+                                                    <h6>Milk & Dairies</h6>
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <div مclass="dashboard-category">
+                                                <a href="javascript:void(0)" class="category-image">
+                                                    <img src="{{asset('assets/svg/pet.svg')}}" class="img-fluid" alt="">
+                                                </a>
+                                                <a href="javascript:void(0)" class="category-name">
+                                                    <h6>Pet Food</h6>
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <div class="dashboard-category">
+                                                <a href="javascript:void(0)" class="category-image">
+                                                    <img src="{{asset('assets/svg/vegetable.svg')}}" class="img-fluid" alt="">
+                                                </a>
+                                                <a href="javascript:void(0)" class="category-name">
+                                                    <h6>Vegetables & Fruit</h6>
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <div class="dashboard-category">
+                                                <a href="javascript:void(0)" class="category-image">
+                                                    <img src="{{asset('assets/svg/cup.svg')}}" class="img-fluid" alt="">
+                                                </a>
+                                                <a href="javascript:void(0)" class="category-name">
+                                                    <h6>Beverages</h6>
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <div class="dashboard-category">
+                                                <a href="javascript:void(0)" class="category-image">
+                                                    <img src="{{asset('assets/svg/meats.svg')}}" class="img-fluid" alt="">
+                                                </a>
+                                                <a href="javascript:void(0)" class="category-name">
+                                                    <h6>Meats & Seafood</h6>
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <div class="dashboard-category">
+                                                <a href="javascript:void(0)" class="category-image">
+                                                    <img src="{{asset('assets/svg/breakfast.svg')}}" class="img-fluid" alt="">
+                                                </a>
+                                                <a href="javascript:void(0)" class="category-name">
+                                                    <h6>Breakfast</h6>
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <div class="dashboard-category">
+                                                <a href="javascript:void(0)" class="category-image">
+                                                    <img src="{{asset('assets/svg/frozen.svg')}}" class="img-fluid" alt="">
+                                                </a>
+                                                <a href="javascript:void(0)" class="category-name">
+                                                    <h6>Frozen Foods</h6>
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <div class="dashboard-category">
+                                                <a href="javascript:void(0)" class="category-image">
+                                                    <img src="{{asset('assets/svg/milk.svg')}}" class="img-fluid" alt="">
+                                                </a>
+                                                <a href="javascript:void(0)" class="category-name">
+                                                    <h6>Milk & Dairies</h6>
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <div class="dashboard-category">
+                                                <a href="javascript:void(0)" class="category-image">
+                                                    <img src="{{asset('assets/svg/pet.svg')}}" class="img-fluid" alt="">
+                                                </a>
+                                                <a href="javascript:void(0)" class="category-name">
+                                                    <h6>Pet Food</h6>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- chart card section End -->
+
+
+                       
+
+
+                        <!-- Best Selling Product Start -->
+                        <div class="col-xl-6 col-md-12">
+                            <div class="card o-hidden card-hover">
+                                <div class="card-header card-header-top card-header--2 px-0 pt-0">
+                                    <div class="card-header-title">
+                                        <h4>NOS GARAGES CONVENTIONNES</h4>
+                                    </div>
+                                            <div class="col-4">
+                                    
+                                                    <a href="afficheGC"  class="btn btn-primary w-100 h-100">afficher</a>
+                                                </div>
+                                    
+                                </div>
+
+                                <div class="card-body p-0">
+                                    <div>
+                                        <div class="table-responsive">
+                                            <table class="best-selling-table w-image
+                                            w-image
+                                            w-image table border-0">
+                                            {% for i in g %}
+                                                <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <div class="best-product-box">
+                                                                <div class="product-image">
+                                                                   <img src="http://localhost/images/{{i.getImage}}" class="img-fluid" alt="">
+                                                                </div>
+                                                                <div class="product-name">
+                                                                   {{i.getNomGarage}}
+                                                                </div>
+                                                            </div>
+                                                        </td>
+
+                                                        <td>
+                                                            <div class="product-detail-box">
+                                                                <h6>Adresse</h6>
+                                                                 {{i.getAdresse}}
+                                                            </div>
+                                                        </td>
+
+                                                        <td>
+                                                            <div class="product-detail-box">
+                                                                <h6>Numero</h6>
+                                                                {{i.getNumero}}
+                                                            </div>
+                                                        </td>
+
+                                                        <td>
+                                                            <div class="product-detail-box">
+                                                                <h6>Panne moteur</h6>
+                                                                {{i.getPanneMoteur}}
+                                                            </div>
+                                                        </td>
+
+                                                        <td>
+                                                            <div class="product-detail-box">
+                                                                <h6>Pompe A Eau</h6>
+                                                                 {{i.getPompeAEau}}
+                                                            </div>
+                                                        </td>
+
+                                                        <td>
+                                                            <div class="product-detail-box">
+                                                                <h6>Patin</h6>
+                                                                {{i.getPatin}}
+                                                            </div>
+                                                        </td>
+
+                                                        <td>
+                                                            <div class="product-detail-box">
+                                                                <h6>Essuie Glace</h6>
+                                                                 {{i.getEssuieGlace}}
+                                                            </div>
+                                                        </td>
+
+                                                        <td>
+                                                            <div class="product-detail-box">
+                                                                <h6>Radiateur</h6>
+                                                                 {{i.getRadiateur}}
+                                                            </div>
+                                                        </td>
+
+                                                        <td>
+                                                            <div class="product-detail-box">
+                                                                <h6>Ventilateur</h6>
+                                                                {{i.getVentilateur}}
+                                                            </div>
+                                                        </td>
+
+                                                        <td>
+                                                            <div class="product-detail-box">
+                                                                <h6>Duride</h6>
+                                                                {{i.getDuride}}
+                                                            </div>
+                                                        </td>
+
+                                                        <td>
+                                                            <div class="product-detail-box">
+                                                                <h6>Fuite D'Huile</h6>
+                                                               {{i.getFuiteDHuile}}
+                                                            </div>
+                                                        </td>
+
+                                                        <td>
+                                                            <div class="product-detail-box">
+                                                                <h6>Vidange</h6>
+                                                               {{i.getVidange}}
+                                                            </div>
+                                                        </td>
+
+                                                        <td>
+                                                            <div class="product-detail-box">
+                                                                <h6>Filtre</h6>
+                                                                {{i.getFiltre}}
+                                                            </div>
+                                                        </td>
+
+                                                        <td>
+                                                            <div class="product-detail-box">
+                                                                <h6>Batterie</h6>
+                                                               {{i.getBatterie}}
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="product-detail-box">
+                                                                <h6>Amortisseur</h6>
+                                                                {{i.getAmortisseur}}
+                                                            </div>
+                                                        </td>
+
+                                                        <td>
+                                                            <div class="product-detail-box">
+                                                                <h6>Frein Main</h6>
+                                                                 {{i.getFreinMain}}
+                                                            </div>
+                                                        </td>
+
+                                                        <td>
+                                                            <div class="product-detail-box">
+                                                                <h6>Feu D'Eclairage</h6>
+                                                                {{i.getFeuDEclairage}}
+                                                            </div>
+                                                        </td>
+
+                                                        <td>
+                                                            <div class="product-detail-box">
+                                                                <h6>Taux De Reduction</h6>
+                                                              {{i.getTauxDeReduction}}
+                                                            </div>
+                                                        </td>
+
+                                                        
+                                                    </tr>
+
+                                                    
+                                                  
+                                                    
+                                                </tbody>
+                                            {% endfor %}
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Best Selling Product End -->
+
+
+                        <!-- Recent orders start-->
+                        <div class="col-xl-6">
+                            <div class="card o-hidden card-hover">
+                                <div class="card-header card-header-top card-header--2 px-0 pt-0">
+                                    <div class="card-header-title">
+                                        <h4>NOS DEMANDES DE MAINTENANCE</h4>
+                                    </div>
+
+                                     <div class="col-4">
+                                    
+                                                    <a href="afficheM"  class="btn btn-primary w-100 h-100">afficher</a>
+                                                </div>
+                                </div>
+
+                                <div class="card-body p-0">
+                                    <div>
+                                        <div class="table-responsive">
+                                            <table class="best-selling-table table border-0">
+                                            {% for i in m %}
+                                                <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <div class="best-product-box">
+                                                                <div class="product-name">
+                                                                    <h5>Id USER</h5>
+                                                                    {{i.getUser.getIdUser}}
+                                                                </div>
+                                                            </div>
+                                                        </td>
+
+                                                        <td>
+                                                            <div class="product-detail-box">
+                                                                <h6>Date</h6>
+                                                               {{i.getDateMaintenance|date("m/d/Y")}}
+                                                            </div>
+                                                        </td>
+
+                                                        <td>
+                                                            <div class="product-detail-box">
+                                                                <h6>Pannes</h6>
+                                                               {% if i.isPanneMoteur =='1' %}panne_moteur|{% endif %}
+                                                         {% if i.isPompeAEau =='1' %}Pompe A Eau|{% endif %}
+                                                          {% if i.isPatin =='1' %}Patin|{% endif %}
+                                                           {% if i.isEssuieGlace =='1' %}Essuie Glace|{% endif %}
+                                                            {% if i.isRadiateur =='1' %}Radiateur|{% endif %}
+                                                             {% if i.isVentilateur =='1' %}Ventilateur|{% endif %}
+                                                              {% if i.isDuride =='1' %}Duride|{% endif %}
+                                                               {% if i.isFuiteDHuile =='1' %}Fuite D'Huile|{% endif %}
+                                                                {% if i.isVidange =='1' %}Vidange|{% endif %}
+                                                                 {% if i.isFiltre =='1' %}Filtre|{% endif %}
+                                                                  {% if i.isBatterie =='1' %}Batterie|{% endif %}
+                                                                  {% if i.isAmortisseur =='1' %}Amortisseur|{% endif %}
+                                                                  {% if i.isFreinMain =='1' %}Frein Main|{% endif %}
+                                                                  {% if i.isFeuDEclairage =='1' %}Feu D'Eclairage|{% endif %}
+                                                              
+                                                            </div>
+                                                        </td>
+
+                                                        
+
+                                                      
+                                                    </tr>
+
+                                                    
+
+                                                   
+
+                                                   
+                                                </tbody>
+                                            {% endfor %}
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Recent orders end-->
+
+
+                    </div>
+                </div>
+                <!-- Container-fluid Ends-->
+                {% endblock %}
+                <!-- footer start-->
+                <div class="container-fluid">
+                    <footer class="footer">
+                        <div class="row">
+                            <div class="col-md-12 footer-copyright text-center">
+                                <p class="mb-0">Copyright 2022 © Fastkart theme by pixelstrap</p>
+                            </div>
+                        </div>
+                    </footer>
+                </div>
+                <!-- footer End-->
+            </div>
+            <!-- index body end -->
+ 
+
+        </div>
+        <!-- Page Body End -->
+
+    </div>
+    <!-- page-wrapper End-->
+ {% block Modal %}
+    <!-- Modal Start -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog  modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <h5 class="modal-title" id="staticBackdropLabel">Logging Out</h5>
+                    <p>Are you sure you want to log out?</p>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="button-box">
+                        <button type="button" class="btn btn--no" data-bs-dismiss="modal">No</button>
+                        <button type="button" class="btn  btn--yes btn-primary">Yes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+    <!-- Modal End -->
+ {% block js %}
+    <!-- latest js -->
+    <script src="{{asset('assets/js/jquery-3.6.0.min.js')}}"></script>
+
+    <!-- Bootstrap js -->
+    <script src="{{asset('assets/js/bootstrap/bootstrap.bundle.min.js')}}"></script>
+
+    <!-- feather icon js -->
+    <script src="{{asset('assets/js/icons/feather-icon/feather.min.js')}}"></script>
+    <script src="{{asset('assets/js/icons/feather-icon/feather-icon.js')}}"></script>
+
+    <!-- scrollbar simplebar js -->
+    <script src="{{asset('assets/js/scrollbar/simplebar.js')}}"></script>
+    <script src="{{asset('assets/js/scrollbar/custom.js')}}"></script>
+
+    <!-- Sidebar jquery -->
+    <script src="{{asset('assets/js/config.js')}}"></script>
+
+    <!-- tooltip init js -->
+    <script src="{{asset('assets/js/tooltip-init.js')}}"></script>
+
+    <!-- Plugins JS -->
+    <script src="{{asset('assets/js/sidebar-menu.js')}}"></script>
+    <script src="{{asset('assets/js/notify/bootstrap-notify.min.js')}}"></script>
+    <script src="{{asset('assets/js/notify/index.js')}}"></script>
+
+    <!-- Apexchar js -->
+    <script src="{{asset('assets/js/chart/apex-chart/apex-chart1.js')}}"></script>
+    <script src="{{asset('assets/js/chart/apex-chart/moment.min.js')}}"></script>
+    <script src="{{asset('assets/js/chart/apex-chart/apex-chart.js')}}"></script>
+    <script src="{{asset('assets/js/chart/apex-chart/stock-prices.js')}}"></script>
+    <script src="{{asset('assets/js/chart/apex-chart/chart-custom1.js')}}"></script>
+
+
+    <!-- slick slider js -->
+    <script src="{{asset('assets/js/slick.min.js')}}"></script>
+    <script src="{{asset('assets/js/custom-slick.js')}}"></script>
+
+    <!-- customizer js -->
+    <script src="{{asset('assets/js/customizer.js')}}"></script>
+
+    <!-- ratio js -->
+    <script src="{{asset('assets/js/ratio.js')}}"></script>
+
+    <!-- sidebar effect -->
+    <script src="{{asset('assets/js/sidebareffect.js')}}"></script>
+
+    <!-- Theme js -->
+    <script src="{{asset('assets/js/script.js')}}"></script>
+{% endblock %}
+</body>
+
+
+<!-- Mirrored from themes.pixelstrap.com/fastkart/back-end/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 22 Mar 2023 08:51:57 GMT -->
+</html>

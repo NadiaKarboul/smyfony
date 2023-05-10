@@ -1,0 +1,9 @@
+knp_paginator:
+    page_range: 5 # Nombre de liens de pagination affichés
+    default_options:
+        page_name: page # Nom du paramètre GET pour la page courante
+        sort_field_name: sort # Nom du paramètre GET pour le champ de tri
+        sort_direction_name: direction # Nom du paramètre GET pour la direction de tri
+        distinct: true # Permet de récupérer uniquement les résultats distincts
+    template:
+   

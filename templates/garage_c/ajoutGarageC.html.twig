@@ -1,0 +1,437 @@
+ {% extends 'homeadmin.html.twig' %}
+{% block body %}
+
+ <!-- flash message -->
+<link rel="stylesheet" href="{{ asset('bundles/mercuryseriesflashy/css/flashy.css') }}">
+  <script src="//code.jquery.com/jquery.js"></script>
+  <script src="{{ asset('bundles/mercuryseriesflashy/js/flashy.js') }}"></script>
+   {{ include('@MercurySeriesFlashy/flashy.html.twig') }}
+
+
+ <!-- map  -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+     integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+     crossorigin=""/>
+     <style> 
+     #maCarte {
+  height: 500px; 
+  width: 800px;
+  margin: auto;
+}
+     </style>
+
+<div id="maCarte"></div>
+
+ <!-- New Product Add Start -->
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="col-sm-8 m-auto">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="card-header-2">
+                                                <h5>Ajouter un Garage</h5>
+                                            </div>
+                                           
+{{ form_start(f,{'attr': {'novalidate': 'novalidate'}} ) }}
+ <form> 
+ {{ form_widget(f._token) }}
+
+                                            <form class="theme-form theme-form-2 mega-form">
+                                                <div class="mb-4 row align-items-center">
+                                                    <label class="form-label-title col-sm-3 mb-0">
+                                                       Nom du garage</label>
+                                                    <div class="col-sm-9">
+                                                        {{ form_widget(f.nom_garage, {'attr': {'class': 'form-control', 'placeholder': 'nom garage'}}) }} 
+                                                           
+                                                      {% if form_errors(f.nom_garage) %}
+  <div class="alert alert-warning">
+    
+    <strong><i class="fas fa-exclamation-triangle"></i> Warning!</strong>{{ form_errors(f.nom_garage) }} 
+  </div>
+{% endif %}                         
+                                                    </div>
+                                                </div>
+                                               
+                                               <div class="mb-4 row align-items-center">
+                                                    <!--<label class="form-label-title col-sm-3 mb-0">
+                                                      adresse du garage</label>-->
+
+ <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script>
+      // Initialisation de la carte
+      var carte = L.map('maCarte').setView([36.8065, 10.1815], 13);
+
+      // Chargement des tuiles ou layers
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        // Il est toujours bien de laisser le lien vers la source des données
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
+        minZoom: 1,
+        maxZoom: 20
+      }).addTo(carte);
+
+ 
+
+// Création d'une liste pour stocker les marqueurs
+var markersList = [];
+
+function onMapClick(e) {
+    // Suppression des anciens marqueurs
+    markersList.forEach(marker => carte.removeLayer(marker));
+    
+    // Ajout d'un nouveau marqueur
+    var marker = L.marker(e.latlng).addTo(carte);
+    
+    // Stockage du nouveau marqueur dans la liste
+    markersList.push(marker);
+    
+    var champAdresse = document.getElementById("adresse");
+   
+    // Appel à l'API de géocodage inversé de OpenStreetMap pour récupérer le nom de l'endroit
+    fetch(`https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${e.latlng.lat}&lon=${e.latlng.lng}`)
+      .then(response => response.json())
+      .then(data => {
+        // Récupération du nom de l'endroit
+        adresse = data.display_name;
+      
+        // Affichage du nom de l'endroit dans la popup du marqueur
+        marker.bindPopup("<p>" + data.display_name + "</p>").openPopup();
+        
+        // Affichage du nom de l'endroit dans le champ texte
+        champAdresse.value = adresse;
+       
+      })
+      .catch(error => console.log(error));
+}
+
+carte.on('click', onMapClick);
+       
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+                                                    <div class="col-sm-9">
+
+
+<!-- L'input pour l'adresse visible -->
+
+{% if g %}
+      
+        <input type="text" class="form-control" id="adresse" name="adresse" value="{{ g.getAdresse }}" hidden>
+        {{ form_widget(f.adresse,{'value': g.getAdresse(), 'attr': {'style': 'display:none;'}})}}
+    </div>
+{% else %}
+   
+     <input type="text" class="form-control" id="adresse" name="adresse"  >
+   
+{% endif %}
+ 
+                  
+                     
+ 
+                                             
+                                                    </div>
+                                                </div>
+ 
+                                                    <div class="mb-4 row align-items-center">
+                                                    <label class="form-label-title col-sm-3 mb-0">
+                                                      Numero</label>
+                                                    <div class="col-sm-9">
+                                                       {{ form_widget(f.numero, {'attr': {'class': 'form-control', 'placeholder': 'numero'}}) }} 
+                                                         
+   {% if form_errors(f.numero) %}
+  <div class="alert alert-warning">
+    
+    <strong><i class="fas fa-exclamation-triangle"></i> Warning!</strong>{{ form_errors(f.numero) }} 
+  </div>
+{% endif %}      
+
+ 
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="card-header-2">
+                                                <h5>Image Garage</h5>
+                                            </div>
+                                            <div class="mb-4 row align-items-center">
+                                                 
+                                                    <div class="col-md-9 col-lg-10">
+                                                    
+ {% if g.getImage is not null %}
+    <div class="form-group">
+       
+        <div>
+            <img src="http://localhost/images/{{g.getImage}}" alt="Current Image" style="max-width: 300px;">
+        </div>
+    </div>
+{% endif %}
+
+<div class="form-group">
+   
+    {{ form_widget(f.image, {'attr': {'class': 'form-control-file'}}) }}
+     {% if form_errors(f.image) %}
+  <div class="alert alert-warning">
+    
+    <strong><i class="fas fa-exclamation-triangle"></i> Warning!</strong>{{ form_errors(f.image) }} 
+  </div>
+{% endif %}     
+</div>
+
+                                                    </div>
+                                                    
+                                                </div>
+
+                                                 <div class="card-header-2">
+                                                <h5>Les Pannes</h5>
+                                            </div>
+                                             <table class="table variation-table table-responsive-sm">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">Pannes</th>
+                                                        <th scope="col">Prix</th>
+                                                       
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Panne Moteur</td>
+                                                        <td>
+                                                          {{ form_widget(f.panne_moteur, {'attr': {'class': 'form-control', 'placeholder': '0'}}) }} 
+                                                           {% if form_errors(f.panne_moteur) %}
+  <div class="alert alert-warning">
+    
+    <strong><i class="fas fa-exclamation-triangle"></i> Warning!</strong>{{ form_errors(f.panne_moteur) }} 
+  </div>
+{% endif %}   
+                                                            
+                                                        </td>
+                                                        
+                                                    </tr>
+                                                    <tr>
+                                                        <td>pompe_a_eau</td>
+                                                        <td>
+                                                             {{ form_widget(f.pompe_a_eau, {'attr': {'class': 'form-control', 'placeholder': '0'}}) }} 
+                                                           {% if form_errors(f.pompe_a_eau) %}
+  <div class="alert alert-warning">
+    
+    <strong><i class="fas fa-exclamation-triangle"></i> Warning!</strong>{{ form_errors(f.pompe_a_eau) }} 
+  </div>
+{% endif %}   
+                                                             
+                                                        </td>
+                                                        
+                                                    </tr>
+                                                    <tr>
+                                                        <td>patin</td>
+                                                        <td>
+                                                   {{ form_widget(f.patin, {'attr': {'class': 'form-control', 'placeholder': '0'}}) }} 
+                                                            {% if form_errors(f.patin) %}
+  <div class="alert alert-warning">
+    
+    <strong><i class="fas fa-exclamation-triangle"></i> Warning!</strong>{{ form_errors(f.patin) }} 
+  </div>
+{% endif %}   
+                                                             
+                                                        </td>
+                                                        
+                                                    </tr>
+                                                    <tr>
+                                                        <td>essuie_glace</td>
+                                                        <td>
+                                                            {{ form_widget(f.essuie_glace, {'attr': {'class': 'form-control', 'placeholder': '0'}}) }} 
+ {% if form_errors(f.essuie_glace) %}
+  <div class="alert alert-warning">
+    
+    <strong><i class="fas fa-exclamation-triangle"></i> Warning!</strong>{{ form_errors(f.essuie_glace) }} 
+  </div>
+{% endif %}                                                               
+                                                        </td>
+                                                        
+                                                    </tr>
+                                                    <tr>
+                                                        <td>radiateur</td>
+                                                        <td>
+                                                           {{ form_widget(f.radiateur, {'attr': {'class': 'form-control', 'placeholder': '0'}}) }} 
+ {% if form_errors(f.radiateur) %}
+  <div class="alert alert-warning">
+    
+    <strong><i class="fas fa-exclamation-triangle"></i> Warning!</strong>{{ form_errors(f.radiateur) }} 
+  </div>
+{% endif %}                                                                
+                                                        </td>
+                                                        
+                                                    </tr>
+                                                    <tr>
+                                                        <td>ventilateur</td>
+                                                        <td>
+                                                         {{ form_widget(f.ventilateur, {'attr': {'class': 'form-control', 'placeholder': '0'}}) }} 
+ {% if form_errors(f.ventilateur) %}
+  <div class="alert alert-warning">
+    
+    <strong><i class="fas fa-exclamation-triangle"></i> Warning!</strong>{{ form_errors(f.ventilateur) }} 
+  </div>
+{% endif %}                                                               
+                                                        </td>
+                                                        
+                                                    </tr>
+                                                    <tr>
+                                                        <td>duride</td>
+                                                        <td>
+                                                            {{ form_widget(f.duride, {'attr': {'class': 'form-control', 'placeholder': '0'}}) }} 
+ {% if form_errors(f.duride) %}
+  <div class="alert alert-warning">
+    
+    <strong><i class="fas fa-exclamation-triangle"></i> Warning!</strong>{{ form_errors(f.duride) }} 
+  </div>
+{% endif %}                                                               
+                                                        </td>
+                                                        
+                                                    </tr>
+                                                    <tr>
+                                                        <td>fuite_d_huile</td>
+                                                        <td>
+                                                             {{ form_widget(f.fuite_d_huile, {'attr': {'class': 'form-control', 'placeholder': '0'}}) }} 
+ {% if form_errors(f.fuite_d_huile) %}
+  <div class="alert alert-warning">
+    
+    <strong><i class="fas fa-exclamation-triangle"></i> Warning!</strong>{{ form_errors(f.fuite_d_huile) }} 
+  </div>
+{% endif %}                                                               
+                                                        </td>
+                                                        
+                                                    </tr>
+                                                    <tr>
+                                                        <td>vidange</td>
+                                                        <td>
+                                                              {{ form_widget(f.vidange, {'attr': {'class': 'form-control', 'placeholder': '0'}}) }} 
+ {% if form_errors(f.vidange) %}
+  <div class="alert alert-warning">
+    
+    <strong><i class="fas fa-exclamation-triangle"></i> Warning!</strong>{{ form_errors(f.vidange) }} 
+  </div>
+{% endif %}                                                                
+                                                        </td>
+                                                        
+                                                    </tr>
+                                                    <tr>
+                                                        <td>filtre</td>
+                                                        <td>
+                                                            {{ form_widget(f.filtre, {'attr': {'class': 'form-control', 'placeholder': '0'}}) }} 
+ {% if form_errors(f.filtre) %}
+  <div class="alert alert-warning">
+    
+    <strong><i class="fas fa-exclamation-triangle"></i> Warning!</strong>{{ form_errors(f.filtre) }} 
+  </div>
+{% endif %}                                                                
+                                                        </td>
+                                                        
+                                                    </tr>
+                                                    <tr>
+                                                        <td>batterie</td>
+                                                        <td>
+                                                              {{ form_widget(f.batterie, {'attr': {'class': 'form-control', 'placeholder': '0'}}) }} 
+ {% if form_errors(f.batterie) %}
+  <div class="alert alert-warning">
+    
+    <strong><i class="fas fa-exclamation-triangle"></i> Warning!</strong>{{ form_errors(f.batterie) }} 
+  </div>
+{% endif %}                                                              
+                                                        </td>
+                                                        
+                                                    </tr>
+                                                    <tr>
+                                                        <td>amortisseur</td>
+                                                        <td>
+                                                        {{ form_widget(f.amortisseur, {'attr': {'class': 'form-control', 'placeholder': '0'}}) }} 
+ {% if form_errors(f.amortisseur) %}
+  <div class="alert alert-warning">
+    
+    <strong><i class="fas fa-exclamation-triangle"></i> Warning!</strong>{{ form_errors(f.amortisseur) }} 
+  </div>
+{% endif %}                                                           <!-- <input  class="form-control" type="number" placeholder="0"  >-->
+                                                             
+                                                        </td>
+                                                        
+                                                    </tr>
+                                                    <tr>
+                                                        <td>frein_main</td>
+                                                        <td>
+                                                             {{ form_widget(f.frein_main, {'attr': {'class': 'form-control', 'placeholder': '0'}}) }} 
+ {% if form_errors(f.frein_main) %}
+  <div class="alert alert-warning">
+    
+    <strong><i class="fas fa-exclamation-triangle"></i> Warning!</strong>{{ form_errors(f.frein_main) }} 
+  </div>
+{% endif %}                                                               
+                                                        </td>
+                                                        
+                                                    </tr>
+                                                    <tr>
+                                                        <td>feu_d_eclairage</td>
+                                                        <td>
+                                                           {{ form_widget(f.feu_d_eclairage, {'attr': {'class': 'form-control', 'placeholder': '0'}}) }} 
+ {% if form_errors(f.feu_d_eclairage) %}
+  <div class="alert alert-warning">
+    
+    <strong><i class="fas fa-exclamation-triangle"></i> Warning!</strong>{{ form_errors(f.feu_d_eclairage) }} 
+  </div>
+{% endif %}                                                                
+                                                        </td>
+                                                        
+                                                    </tr>
+                                                    <tr>
+                                                        <td>taux_de_reduction</td>
+                                                        <td>
+                                                             {{ form_widget(f.taux_de_reduction, {'attr': {'class': 'form-control', 'placeholder': '0'}}) }} 
+ {% if form_errors(f.taux_de_reduction) %}
+  <div class="alert alert-warning">
+    
+    <strong><i class="fas fa-exclamation-triangle"></i> Warning!</strong>{{ form_errors(f.taux_de_reduction) }} 
+  </div>
+{% endif %}                                                                 
+                                                        </td>
+                                                        
+                                                    </tr>
+                                                   
+                                                   
+                                                </tbody>
+                                            </table>
+
+                                              {{ form_widget(f.ajouter, {'attr': {'class': 'btn btn-solid'}}) }}
+                                                
+                                            </form>
+                                        </div>
+                                    </div>
+
+                                
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                                       
+             </form>                                
+        {{ form_end(f) }}
+        
+                <!-- New Product Add End -->
+
+                 <!-- Make sure you put this AFTER Leaflet's CSS -->
+ <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+     integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+     crossorigin=""></script>
+
+     
+
+                  {% endblock %}

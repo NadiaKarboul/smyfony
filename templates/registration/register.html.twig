@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block header %}
+    <nav class="top-0 left-0 w-full py-6">
+        <div class="container mx-auto flex justify-between">
+            <div class="mb-6 md:mb-0">
+                <a href="{{ path('app_home') }}" class="flex items-center">
+                    <img src="{{  asset('DRIFT.png') }}" class="block  h-20 rounded-full  sm:shrink-0 animate-bounce"
+                         alt="logo" />
+                    <span
+                            class="mb-4 text-3xl font-extrabold leading-none tracking-tight text-gray-900  text-white self-center px-1  whitespace-nowrap  animate-bounce">DRIFT&RACE</span>
+                </a>
+            </div>
+
+        </div>
+    </nav>
+{% endblock %}
+
+{% block body %}
+   {{ form_start(registrationForm,{'attr':{'novalidate':'novalidate'}}) }}
+        {{ form_row(registrationForm.email) }}
+        {{ form_row(registrationForm.plainPassword, {
+            label: 'Mot de passe'
+        }) }}
+        {{ form_row(registrationForm.nom) }}
+        {{ form_row(registrationForm.prenom) }}
+        {{ form_row(registrationForm.age) }}
+        {{ form_row(registrationForm.num_tel) }}
+        {{ form_row(registrationForm.adresse) }}
+
+        {{ form_row(registrationForm.cv, {'label': 'Permis PDF'}) }}
+       
+        <button type="submit" class="btn">Register</button>
+    {{ form_widget(registrationForm._token) }}
+    {{ form_end(registrationForm, {'render_rest': false}) }}
+{% endblock %}

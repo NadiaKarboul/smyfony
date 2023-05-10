@@ -1,0 +1,199 @@
+{% extends 'homeadmin.html.twig' %}
+{% block body %}
+<!-- config map-->
+ <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+     integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+     crossorigin=""/>
+     <style> 
+     #maCarte {
+  height: 500px; 
+  width: 800px;
+  margin: auto;
+}
+     </style>
+<!-- Container-fluid starts-->
+<div id="maCarte"></div>
+            <div class="page-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="card card-table">
+                                <div class="card-body">
+                                    <div class="title-header option-title d-sm-flex d-block">
+                                        <h5>Lists des Garages</h5>
+                                        <div class="right-options">
+                                            <ul>
+                                               
+                                                <li>
+                                                    <a class="btn btn-solid" href="ajouterGC">Ajouter Garage</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="table-responsive">
+                                            <table class="table all-package theme-table table-product" id="table_id">
+                                                <thead>
+                                                    <tr>
+                                                     <th>Option </th>
+                                                        <th>GARAGE Image</th>
+                                                        <th>GARAGE Nom</th>
+                                                        <th>Numero</th>
+                                                        <th>taux_de_reduction(%)</th>
+                                                        <th>Adresse</th>
+                                                    </tr>
+                                                </thead>
+
+                                                <tbody>
+                                                  {% for i in g %}
+                                                    <tr>
+                                                   
+                                                  
+                                                       
+                                                        <td>
+                                                            <ul>
+                                                                <li>
+                                                                    <a >
+                                                                     <form action="{{path('detailGC',{'id':i.getId}) }}"><button> <i class="ri-eye-line"></i></button>  </form>
+                                                                    </a>
+                                                                </li>
+
+                                                                <li>
+                                                                    <a>
+                                                                        
+                                                                        <form action="{{path('modifierGC',{'id':i.getId}) }}"> <button><i class="ri-pencil-line"></i></button> </form>
+                                                                    </a>
+                                                                </li>
+
+                                                                <li>
+                                                                  <a>
+                                                                    <form action="{{path('supprimerGC',{'id':i.getId}) }}"> <button><i class="ri-delete-bin-line"></i></button> </form>
+                                                                </a>
+                                                                </li>
+                                                            </ul>
+                                                        </td>           
+                                                        
+<td>
+                                                            <div class="table-image">
+                                                                <img src="http://localhost/images/{{i.getImage}}" class="img-fluid" alt="">
+                                                                   
+                                                            </div>
+                                                        </td>
+         <td>{{i.getNomGarage}}</td>
+           
+            <td>{{i.getNumero}}</td>
+            
+            <td>{{i.getTauxDeReduction}}</td>
+
+             <td>{{i.getAdresse}}</td>
+            
+       
+                                                    </tr>
+
+
+
+<div class="modal fade theme-modal remove-coupon" id="exampleModalToggle" aria-hidden="true" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header d-block text-center">
+                    <h5 class="modal-title w-100" id="exampleModalLabel22">Are You Sure ?</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="remove-box">
+                        <p>The permission for the use/group, preview is inherited from the object, object will create a
+                            new permission for this object</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-animation btn-md fw-bold" data-bs-dismiss="modal">No</button>
+                    <button type="button" class="btn btn-animation btn-md fw-bold" data-bs-target="#exampleModalToggle2"
+                        data-bs-toggle="modal" data-bs-dismiss="modal">Yes</button>
+                        
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade theme-modal remove-coupon" id="exampleModalToggle2" aria-hidden="true" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-center" id="exampleModalLabel12">Done!</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="remove-box text-center">
+                        <div class="wrapper">
+                            <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                                <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none" />
+                                <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
+                            </svg>
+                        </div>
+                        <h4 class="text-content">It's Removed.</h4>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                  <button class="btn btn-primary" data-bs-toggle="modal" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                   
+                                                 {% endfor %}
+                                                    
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Container-fluid Ends-->
+                 <!-- Make sure you put this AFTER Leaflet's CSS -->
+ <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+     integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+     crossorigin=""></script>
+
+<script> 
+ // Initialisation de la carte
+      var carte = L.map('maCarte').setView([36.8065, 10.1815], 13);
+
+      // Chargement des tuiles ou layers
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        // Il est toujours bien de laisser le lien vers la source des données
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
+        minZoom: 1,
+        maxZoom: 20
+      }).addTo(carte);
+
+// Recherche de l'endroit
+{% for i in g %}
+var nomEndroit = "{{i.getAdresse}}";
+
+fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${nomEndroit}`)
+  .then(response => response.json())
+  .then(data => {
+    // Récupération des coordonnées de l'endroit
+    var latlng = [data[0].lat, data[0].lon];
+    
+    // Ajout du marqueur sur la carte
+    var marker = L.marker(latlng).addTo(carte);
+    marker.bindPopup("<p>"+"{{i.getNomGarage}}"+"</p>");
+    
+    // Centrage de la carte sur le marqueur
+    carte.setView(latlng, 13);
+  })   
+  .catch(error => console.log(error));
+{% endfor %}
+</script>
+
+  
+                {% endblock %}

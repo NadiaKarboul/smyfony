@@ -1,0 +1,102 @@
+{% extends 'base-front.html.twig' %}
+{% block body %}
+
+
+    <!-- Content -->
+    <div class="page-content">
+        <!-- inner page banner -->
+        <div class="dlab-bnr-inr overlay-black-middle" style="background-image:url(images/background/bg4.jpg);">
+            <div class="container">
+                <div class="dlab-bnr-inr-entry">
+                    <h1 class="text-white">Ma demande </h1>
+                </div>
+            </div>
+        </div>
+        <!-- inner page banner END -->
+        <!-- Breadcrumb row -->
+        <div class="breadcrumb-row">
+            <div class="container">
+                <ul class="list-inline">
+                    <li><a href="#">Home</a></li>
+                    <li>Ma demande</li>
+                </ul>
+            </div>
+        </div>
+        <!-- Breadcrumb row END -->
+        <div class="content-area">
+            <!-- Left & right section start -->
+            <div class="container">
+                
+                <div class="p-a30 bg-white m-b30 p-b0">
+                    <div class="section-head inner-head">
+                        <h2 class="text-uppercase">Ma DEMANDE</h2>
+                    </div>
+                    <div class="section-content">
+                        <div class="row">
+                            {% for i in m %}
+                            <div class="col-md-4 col-lg-4 m-b30">
+                                <div class="dlab-box p-a20 border-1 bg-gray">
+                                    <div class="dlab-media"> <a href="#"><img src="images/our-work/pic1.jpg" alt=""></a> </div>
+                                    <div class="dlab-info">
+                                        <h4 class="dlab-title m-t20"><a href="#"></a></h4>
+                                      
+                                         <table class="table ticket-table all-package theme-table" id="table_id">
+                                                <thead>
+                                                    <tr>
+                                                        
+                                                        <th>
+                                                            <span>Date</span>
+                                                        </th>
+                                                        <th>
+                                                            <span>Pannes</span>
+                                                        </th>
+                                                        
+                                                    </tr>
+                                                </thead>
+                                                
+                                                <tbody>
+                                                  
+                                                    <tr>
+                                                        
+                                                            
+                                                             <!-- <td>{{i.getUser.getIdUser}}</td> -->
+                                                        
+                                                         <td>{{i.getDateMaintenance|date("m/d/Y")}}</td>
+
+                                                         <td>{% if i.isPanneMoteur =='1' %}panne_moteur|{% endif %}
+                                                         {% if i.isPompeAEau =='1' %}Pompe A Eau|{% endif %}
+                                                          {% if i.isPatin =='1' %}Patin|{% endif %}
+                                                           {% if i.isEssuieGlace == '1' %}Essuie Glace|{% endif %}
+                                                            {% if i.isRadiateur =='1' %}Radiateur|{% endif %}
+                                                             {% if i.isVentilateur =='1' %}Ventilateur|{% endif %}
+                                                              {% if i.isDuride =='1' %}Duride|{% endif %}
+                                                               {% if i.isFuiteDHuile =='1' %}Fuite D'Huile|{% endif %}
+                                                                {% if i.isVidange =='1' %}Vidange|{% endif %}
+                                                                 {% if i.isFiltre =='1' %}Filtre|{% endif %}
+                                                                  {% if i.isBatterie =='1' %}Batterie|{% endif %}
+                                                                  {% if i.isAmortisseur =='1' %}Amortisseur|{% endif %}
+                                                                  {% if i.isFreinMain =='1' %}Frein Main|{% endif %}
+                                                                  {% if i.isFeuDEclairage =='1' %}Feu D'Eclairage|{% endif %}
+                                                              
+                                                         </td>
+                                                            
+                                                    </tr>
+                                                 
+                                                </tbody>
+                                            </table>
+                                          <form action="{{path('modifierM',{'id':i.getId}) }}"> <button class="site-button">Modifier</button> </form> 
+									</div>
+                                </div>
+                                 
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <!-- Images box with content demo 5 END -->
+            </div>
+            <!-- Left & right section  END -->
+        </div>
+    </div>
+    <!-- Content END-->
+       {% endblock %}

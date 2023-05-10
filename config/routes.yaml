@@ -1,0 +1,17 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+download_ticket_pdf:
+    path: /ticket/{id}/download/pdf
+    controller: App\Controller\HomeController::downloadTicketPdf
+forgot_password:
+    path: /forgot-password
+    controller: App\Controller\SecurityController::forgotPassword
+pdf:
+    path: /pdf
+    controller: Dompdf:DevisController:pdf
+
+process_payment:
+  path: /payment/process
+  controller: App\Controller\AdminController::processPayment
+  methods: [POST]

@@ -1,0 +1,57 @@
+{% extends 'base-front.html.twig' %}
+
+
+
+{% block body %}
+
+<div class="page-content bg-white"  >
+    <!-- inner page banner -->
+    <div class="dlab-bnr-inr overlay-black-middle" style="background-image:url(images/background/bg4.jpg);">
+        <div class="container">
+            <div class="dlab-bnr-inr-entry">
+                <h1 class="text-white">Profile</h1>
+            </div>
+        </div>
+    </div>
+
+</div>
+    <h1>User</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Nom</th>
+                <td>{{ user.nom }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{ user.prenom }}</td>
+            </tr>
+            <tr>
+                <th>NumTel</th>
+                <td>{{ user.numTel }}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ user.adresse }}</td>
+            </tr>
+           
+            <tr>
+                <th>Email</th>
+                <td>{{ user.email }}</td>
+            </tr>
+            <tr>
+                <th>Age</th>
+                <td>{{ user.age }}</td>
+            </tr>
+           
+        </tbody>
+    </table>
+
+    <a href="/payement1">
+<button  id="submit-button" class="site-button float-end" type="submit">Alimenter</button> </a>
+    <a href="{{ path('app_user_edit', {'idUser': user.idUser}) }}">edit</a>
+<br> 
+<br>
+
+{% endblock %}

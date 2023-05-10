@@ -1,0 +1,159 @@
+{% extends 'base-front.html.twig' %}
+{% block body %}
+	 <link rel="stylesheet" href="{{ asset('bundles/mercuryseriesflashy/css/flashy.css') }}">
+  <script src="//code.jquery.com/jquery.js"></script>
+  <script src="{{ asset('bundles/mercuryseriesflashy/js/flashy.js') }}"></script>
+   {{ include('@MercurySeriesFlashy/flashy.html.twig') }}
+    <!-- Content -->
+   
+    <div class="page-content bg-white">
+        <!-- inner page banner -->
+        <div class="dlab-bnr-inr overlay-black-middle" style="background-image:url(images/background/bg4.jpg);">
+            <div class="container">
+                <div class="dlab-bnr-inr-entry">
+                    <h1 class="text-white">Maintenance</h1>
+                </div>
+            </div>
+        </div>
+        <!-- inner page banner END -->
+        <!-- Breadcrumb row -->
+        <div class="breadcrumb-row">
+            <div class="container">
+                <ul class="list-inline">
+                    <li><a href="afficheM.html.twig">Home</a></li>
+                    <li>Ajout Maintenance</li>
+                </ul>
+            </div>
+        </div>
+        <!-- Breadcrumb row END -->
+
+        <!-- contact area -->
+         {{ form_start(f)}}
+          {{ form_widget(f._token) }}
+        <div class="section-full content-inner">
+            <!-- Product -->
+             
+         <div class="container">
+            <div class="dlab-info p-a30 bg-gray">
+				<form class="shop-form">
+					<div class="row">
+						<div class="col-md-6 col-lg-6 m-b30">
+							<h4>DEMANDE MAINTENANCE</h4>
+							
+							<div class="row">
+								<div class="form-group col-lg-6 col-md-6 col-sm-6" >
+									  
+                                   
+        {{ form_widget(f.panne_moteur) }}
+        {{ form_label(f.panne_moteur) }}
+
+        
+								</div>
+								<div class="form-group col-lg-6 col-md-6 col-sm-6">
+									
+                                     {{ form_widget(f.pompe_a_eau) }}
+        {{ form_label(f.pompe_a_eau) }}
+
+								</div>
+							 </div>
+                             <div class="row">
+							 <div class="form-group col-lg-6 col-md-6 col-sm-6">
+								
+                                 {{ form_widget(f.patin) }}
+        {{ form_label(f.patin) }}
+							 </div>
+							 <div class="form-group col-lg-6 col-md-6 col-sm-6">
+								
+                                {{ form_widget(f.essuie_glace) }}
+        {{ form_label(f.essuie_glace) }}
+
+							 </div>
+                             </div>
+							 <div class="row">
+								<div class="form-group col-lg-6 col-md-6 col-sm-6">
+									 {{ form_widget(f.radiateur) }}
+        {{ form_label(f.radiateur) }}
+                                   
+								</div>
+								<div class="form-group col-lg-6 col-md-6 col-sm-6">
+								
+                                     {{ form_widget(f.ventilateur) }}
+        {{ form_label(f.ventilateur) }}
+								</div>
+							 </div>
+							 <div class="row">
+								<div class="form-group col-lg-6 col-md-6 col-sm-6">
+								
+                                     {{ form_widget(f.duride) }}
+        {{ form_label(f.duride) }}
+								</div>
+								<div class="form-group col-lg-6 col-md-6 col-sm-6">
+									
+                                     {{ form_widget(f.fuite_d_huile) }}
+        {{ form_label(f.fuite_d_huile) }}
+								</div>
+							 </div>
+							 <div class="row" >
+								<div class="form-group col-lg-6 col-md-6 col-sm-6">
+									
+                                      {{ form_widget(f.vidange) }}
+        {{ form_label(f.vidange) }}
+								</div>
+								<div class="form-group col-lg-6 col-md-6 col-sm-6">
+								
+                                     {{ form_widget(f.filtre) }}
+        {{ form_label(f.filtre) }}
+								</div>
+							 </div>
+                             <div class="row">
+									<div class="form-group col-lg-6 col-md-6 col-sm-6">
+									
+                                         {{ form_widget(f.batterie) }}
+        {{ form_label(f.batterie) }}
+									</div>
+									<div class="form-group col-lg-6 col-md-6 col-sm-6">
+									
+                                     {{ form_widget(f.amortisseur) }}
+        {{ form_label(f.amortisseur) }}
+									</div>
+								 </div>
+                                 <div class="row">
+								 <div class="form-group col-lg-6 col-md-6 col-sm-6">
+									
+                                     {{ form_widget(f.frein_main) }}
+        {{ form_label(f.frein_main) }}
+								 </div>
+								 <div class="form-group col-lg-6 col-md-6 col-sm-6">
+									
+                                     {{ form_widget(f.feu_d_eclairage) }}
+        {{ form_label(f.feu_d_eclairage) }}
+								 </div>
+                                 </div>
+								 <div class="row">
+									
+									<div class="form-group col-lg-6 col-md-6 col-sm-6">
+									{{ form_widget(f.ajouter)}}
+									</div>
+								</div>
+							
+							</div>
+						</div>
+						
+					</div>
+				 </form>
+             
+				 <div class="dlab-divider bg-gray-dark text-gray-dark icon-center"><i class="fas fa-circle bg-white text-gray-dark"></i></div>
+				
+		        </div>
+		   </div>
+            <!-- Product END -->
+		</div>
+       
+       {{ form_end(f) }}	
+ 
+        
+		
+        <!-- contact area  END -->
+    </div>
+    <!-- Content END-->
+{% endblock %}

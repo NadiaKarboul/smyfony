@@ -1,0 +1,250 @@
+{% extends "admin/indexx.html.twig" %}
+{% block body %}
+	<div
+		class="page-body">
+
+		<!-- New Product Add Start -->
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-12">
+					<div class="row">
+						<div class="col-sm-8 m-auto">
+							<div class="card">
+								<div class="card-body">
+									<div class="card-header-2">
+										<h5>Update Bonplan</h5>
+									</div>
+									{{form_start(f,{'attr': {'novalidate': 'novalidate', 'class':'theme-form theme-form-2 mega-form'}})}}
+
+
+									{% if form_errors(f.nom_bonplan) %}
+
+										<div class="alert alert-danger no-radius">
+											<strong>Danger!</strong>
+											{{ form_errors(f.nom_bonplan) }}</div>
+                                            {% endif %}
+										<div class="mb-4 row align-items-center">
+											<label class="form-label-title col-sm-3 mb-0">BonPlan Name</label>
+											<div class="col-sm-9">
+												{{ form_widget(f.nom_bonplan) }}
+											</div>
+										</div>
+										{% if form_errors(f.gouvernorat) %}
+
+											<div class="alert alert-danger no-radius">
+												<strong>Danger!</strong>
+												{{ form_errors(f.gouvernorat) }}</div>
+										{% endif %}
+										<div class="mb-4 row align-items-center">
+											<label class="form-label-title col-sm-3 mb-0">Gouvernorat</label>
+											<div class="col-sm-9">
+												{{ form_widget(f.gouvernorat) }}
+											</div>
+										</div>
+										{% if form_errors(f.ville) %}
+
+											<div class="alert alert-danger no-radius">
+												<strong>Danger!</strong>
+												{{ form_errors(f.ville) }}</div>
+										{% endif %}
+										<div class="mb-4 row align-items-center">
+											<label class="form-label-title col-sm-3 mb-0">City</label>
+											<div class="col-sm-9">
+												{{ form_widget(f.ville) }}
+											</div>
+										</div>
+										{% if form_errors(f.rue) %}
+
+											<div class="alert alert-danger no-radius">
+												<strong>Danger!</strong>
+												{{ form_errors(f.rue) }}</div>
+										{% endif %}
+										<div class="mb-4 row align-items-center">
+											<label class="form-label-title col-sm-3 mb-0">Street</label>
+											<div class="col-sm-9">
+												{{ form_widget(f.rue) }}
+											</div>
+										</div>
+										{% if form_errors(f.description) %}
+
+											<div class="alert alert-danger no-radius">
+												<strong>Danger!</strong>
+												{{ form_errors(f.description) }}</div>
+										{% endif %}
+										<div class="mb-4 row align-items-center">
+											<label class="form-label-title col-sm-3 mb-0">Description</label>
+											<div class="col-sm-9">
+												{{ form_widget(f.description) }}
+											</div>
+										</div>
+										{% if form_errors(f.type) %}
+
+											<div class="alert alert-danger no-radius">
+												<strong>Danger!</strong>
+												{{ form_errors(f.type) }}</div>
+										{% endif %}
+										<div class="mb-4 row align-items-center">
+											<label class="form-label-title col-sm-3 mb-0">Type</label>
+											<div class="col-sm-9">
+												{{ form_widget(f.type) }}
+											</div>
+										</div>
+									{# {{ form_errors(f.imageFile) }} #}
+									<div class="mb-4 row align-items-center">
+										<label class="col-sm-3 col-form-label form-label-title">Image</label>
+										<div class="col-sm-9">
+											{{ form_widget(f.imageFile,{'attr': {'onchange': 'previewImage(this)'}}) }}
+
+										</div>
+									</div>
+									<div class="mb-4 row align-items-center" style="
+											    display: flex;
+											    align-items: center;
+											    justify-content: center;
+											">
+
+										<img id="image-preview" src="http://localhost/images/{{b.getImage()}}" alt="Selected Image" style=" max-width: 200px;">
+
+									</div>
+									 <div class="mb-4 row align-items-center" style="
+											    display: flex;
+											    align-items: center;
+											    justify-content: center;
+                                                
+											">
+                                                     {{ form_widget(f.save,{'attr': {'style':'width : 150px'} }) }}
+                                                   
+                                                    
+                                                </div>
+
+
+									{{form_end(f)}}
+								</div>
+							</div>
+							{# <div class="mb-4 row align-items-center">
+							                                                    <label class="col-sm-3 col-form-label form-label-title">Product
+							                                                        Type</label>
+							                                                    <div class="col-sm-9">
+							                                                        <select class="js-example-basic-single w-100" name="state">
+							                                                            <option disabled>Static Menu</option>
+							                                                            <option>Simple</option>
+							                                                            <option>Classified</option>
+							                                                        </select>
+							                                                    </div>
+							                                                </div>
+							
+							                                                <div class="mb-4 row align-items-center">
+							                                                    <label
+							                                                        class="col-sm-3 col-form-label form-label-title">Category</label>
+							                                                    <div class="col-sm-9">
+							                                                        <select class="js-example-basic-single w-100" name="state">
+							                                                            <option disabled>Category Menu</option>
+							                                                            <option>Electronics</option>
+							                                                            <option>TV & Appliances</option>
+							                                                            <option>Home & Furniture</option>
+							                                                            <option>Another</option>
+							                                                            <option>Baby & Kids</option>
+							                                                            <option>Health, Beauty & Perfumes</option>
+							                                                            <option>Uncategorized</option>
+							                                                        </select>
+							                                                    </div>
+							                                                </div>
+							
+							                                                <div class="mb-4 row align-items-center">
+							                                                    <label
+							                                                        class="col-sm-3 col-form-label form-label-title">Subcategory</label>
+							                                                    <div class="col-sm-9">
+							                                                        <select class="js-example-basic-single w-100" name="state">
+							                                                            <option disabled>Subcategory Menu</option>
+							                                                            <option>Ethnic Wear</option>
+							                                                            <option>Ethnic Bottoms</option>
+							                                                            <option>Women Western Wear</option>
+							                                                            <option>Sandels</option>
+							                                                            <option>Shoes</option>
+							                                                            <option>Beauty & Grooming</option>
+							                                                        </select>
+							                                                    </div>
+							                                                </div>
+							
+							                                                <div class="mb-4 row align-items-center">
+							                                                    <label
+							                                                        class="col-sm-3 col-form-label form-label-title">Brand</label>
+							                                                    <div class="col-sm-9">
+							                                                        <select class="js-example-basic-single w-100">
+							                                                            <option disabled>Brand Menu</option>
+							                                                            <option value="puma">Puma</option>
+							                                                            <option value="hrx">HRX</option>
+							                                                            <option value="roadster">Roadster</option>
+							                                                            <option value="zara">Zara</option>
+							                                                        </select>
+							                                                    </div>
+							                                                </div>
+							
+							                                                <div class="mb-4 row align-items-center">
+							                                                    <label class="col-sm-3 col-form-label form-label-title">Unit</label>
+							                                                    <div class="col-sm-9">
+							                                                        <select class="js-example-basic-single w-100">
+							                                                            <option disabled>Unit Menu</option>
+							                                                            <option>Kilogram</option>
+							                                                            <option>Pieces</option>
+							                                                        </select>
+							                                                    </div>
+							                                                </div>
+							                                                <div class="mb-4 row align-items-center">
+							                                                    <label class="col-sm-3 col-form-label form-label-title">Tags</label>
+							                                                    <div class="col-sm-9">
+							                                                        <div class="bs-example">
+							                                                            <input type="text" class="form-control"
+							                                                                placeholder="Type tag & hit enter" id="#inputTag"
+							                                                                data-role="tagsinput">
+							                                                        </div>
+							                                                    </div>
+							                                                </div>
+							                                                <div class="mb-4 row align-items-center">
+							                                                    <label
+							                                                        class="col-sm-3 col-form-label form-label-title">Exchangeable</label>
+							                                                    <div class="col-sm-9">
+							                                                        <label class="switch">
+							                                                            <input type="checkbox"><span class="switch-state"></span>
+							                                                        </label>
+							                                                    </div>
+							                                                </div>
+							                                                <div class="row align-items-center">
+							                                                    <label
+							                                                        class="col-sm-3 col-form-label form-label-title">Refundable</label>
+							                                                    <div class="col-sm-9">
+							                                                        <label class="switch">
+							                                                            <input type="checkbox" checked=""><span
+							                                                                class="switch-state"></span>
+							                                                        </label>
+							                                                    </div>
+							                                                </div> #}
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- footer start-->
+		
+		
+	</div>
+	<!-- Order section End -->
+</div>{% endblock %}{% block script %}
+<script>
+	function previewImage(input) {
+if (input.files && input.files[0]) {
+var reader = new FileReader();
+
+reader.onload = function (e) {
+var img = document.getElementById('image-preview');
+img.src = e.target.result;
+img.style.display = 'block';
+};
+
+reader.readAsDataURL(input.files[0]);
+}
+}
+</script>{% endblock %}

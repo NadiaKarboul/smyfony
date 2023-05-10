@@ -1,0 +1,37 @@
+
+<div class="row">
+            {% for i in p %}
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="item-box m-b10">
+                    <div class="item-img">
+                        <img src="http://localhost/images/{{i.getImage}}" alt=""/>
+                        <div class="item-info-in">
+                            <ul>
+                                <li><a href="#"><i class="ti-shopping-cart"></i></a></li>
+                                <li><a href="{{path('affichedetail',{'id':i.id})}}"><i class="ti-eye"></i></a></li>
+                                <li><a href="#"><i class="ti-heart"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="item-info text-center text-black p-a10">
+                        <h6 class="item-title"><a href="{{path('affichedetail',{'id':i.id})}}">{{i.nom_prod}}</a></h6>
+                       
+                        
+                        <p class="content">{{i.description_prod}}</p>
+                        <h4 class="item-price"><span class="text-primary">{{i.prix_prod}} Dt</span></h4>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            
+            {# On crée des variables personnalisées #}
+            {% set queryParams = app.request.query.all %}
+            {% set queryString = queryParams|filter((v, k) => k != "page" and k != "ajax")|url_encode %}
+        
+            <div class="pagination">
+                {{ knp_pagination_render(p) }}
+
+
+            </div>
+        
+    </div>

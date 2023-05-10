@@ -1,0 +1,66 @@
+{% extends 'base-front.html.twig' %}
+{% block titre%}
+<title>Commande</title>
+{% endblock %}
+{% block body%} 
+
+<div class="page-content bg-white">
+    <!-- inner page banner -->
+    <div class="dlab-bnr-inr overlay-black-middle" style="background-image:url({{ asset('images/background/slide13.jpg') }});">
+        <div class="container">
+            <div class="dlab-bnr-inr-entry">
+                <h1 class="text-white">Vos commandes </h1>
+            </div>
+        </div>
+    </div>
+
+    <!-- Breadcrumb row -->
+    <div class="breadcrumb-row">
+        <div class="container">
+            <ul class="list-inline">
+                <li><a href="{{path('resume')}}">Accueil</a></li>
+                <li>Vos Commandes</li>
+            </ul>
+        </div>
+    </div>
+    <!-- Breadcrumb row END -->
+</div>
+<div class="section-full content-inner">
+
+                                    
+    <!-- Commande -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 m-b30">
+                <div class="table-responsive">
+                    <table class="table check-tbl">
+                        <thead class="text-left">
+    <tr>
+        <th>Numéro de la Commande</th>
+        <th>Date Lancement</th>
+        <th>Adresse de livraison</th>
+        <th>Etat</th>
+        <th>Montant total à payer</th>  
+    </tr>
+</thead>
+<tbody>
+    <tr class="alert"{% for c in commandes %}>
+
+        <td class="product-item-name">{{c.getId()}}</td>
+        <td class="product-item-name">{{c.getDateCommande()|date('d/m/Y')}}</td>
+        <td class="product-item-name">{{c.getRue()}} {{c.getVille()}} {{c.getGouvernorat()}} {{c.getCodePostal()}}</td>
+        <td class="product-item-name">{{c.getEtatCommande()}}</td>
+        <td class="product-item-name">{{c.getMontant()}} DT</td>
+        <td class="product-item-name"><a class="site-button m-r15" href="{{path('suppC',{'id':c.getId()}) }}"> Supprimer</a></td>
+        <tr {%  else  %}> <h1>Vous n'avez aucune commande </h1></tr>
+    </tr {% endfor %}>
+</tbody>  
+</table>
+
+</div>
+</div>
+</div>
+</div>
+<!-- Commande END -->
+</div>
+{% endblock %}

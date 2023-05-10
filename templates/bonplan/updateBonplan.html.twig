@@ -1,0 +1,108 @@
+{% extends "base-front.html.twig" %}
+{% block body %}
+	<div style="background-image:linear-gradient(rgba(0, 0, 0, 0.8),
+                       rgba(0, 0, 0, 0.8)), url(../images/background/bg4.jpg);  padding: 50px;">
+			   
+		<div class="login-form  tp-login-white text-white">
+			<div class="tab-content nav">
+				<div id="login" class="tab-pane active text-center">
+					{{form_start(f,{'attr': {'novalidate': 'novalidate', 'class': 'p-a30 dlab-form text-center text-center','style': 'width:400px'}})}}
+
+					<h3 class="form-title m-t0">Update</h3>
+					<div class="dlab-separator-outer m-b5">
+						<div class="dlab-separator bg-primary style-liner"></div>
+					</div>
+					<p>Provide your bonplan details below:
+					</p>
+					{% if form_errors(f.nom_bonplan) %}
+							<div class="alert alert-danger no-radius">
+								<strong>Danger!</strong>
+								{{ form_errors(f.nom_bonplan) }}</div>
+						{% endif %}
+					<div class="form-group">
+						
+						{{ form_widget(f.nom_bonplan,{'attr':{'class':'form-control' } }) }}
+					</div>
+					<div class="form-group">
+						{% if form_errors(f.type) %}
+							<div class="alert alert-danger no-radius">
+								<strong>Danger!</strong>
+								{{ form_errors(f.type) }}</div>
+						{% endif %}
+						{{ form_widget(f.type,{'attr':{'class':'form-control' } }) }}
+					</div>
+					<div class="form-group">
+						{% if form_errors(f.gouvernorat) %}
+							<div class="alert alert-danger no-radius">
+								<strong>Danger!</strong>
+								{{ form_errors(f.gouvernorat) }}</div>
+						{% endif %}
+						{{ form_widget(f.gouvernorat,{'attr':{'class':'form-control' } }) }}
+					</div>
+
+					<div class="form-group">
+						{% if form_errors(f.ville) %}
+							<div class="alert alert-danger no-radius">
+								<strong>Danger!</strong>
+								{{ form_errors(f.ville) }}</div>
+						{% endif %}
+						{{ form_widget(f.ville,{'attr':{'class':'form-control' } }) }}
+					</div>
+					<div class="form-group">
+						{% if form_errors(f.rue) %}
+							<div class="alert alert-danger no-radius">
+								<strong>Danger!</strong>
+								{{ form_errors(f.rue) }}</div>
+						{% endif %}
+						{{ form_widget(f.rue,{'attr':{'class':'form-control' } }) }}
+					</div>
+					<div class="form-group">
+						{% if form_errors(f.description) %}
+							<div class="alert alert-danger no-radius">
+								<strong>Danger!</strong>
+								{{ form_errors(f.description) }}</div>
+						{% endif %}
+						{{ form_widget(f.description,{'attr':{'class':'form-control' } }) }}
+					</div>
+					<div class="form-group">
+						{{ form_widget(f.imageFile,{'attr':{'class':'form-control','onchange': 'previewImage(this)' } }) }}
+					</div>
+					<div class="form-group" style="display: flex;
+							    justify-content: center;">
+						<img id="imagePrev" src="http://localhost/images/{{b.getImage()}}" alt="Selected Image"style=" width: 200px; height:200px" >
+					</div>
+
+					<div class="form-group text-left ">
+						<a class="site-button outline white" href="{{path('all_bonplan') }}">Back</a>
+						{# <button class="site-button float-end">Submit</button> #}
+						{{ form_widget(f.save,{'attr': {'class':'site-button float-end'} }) }}
+					</div>
+					{{form_end(f)}}
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+{% endblock %}
+{% block script %}
+	<script>
+		function previewImage(input) {
+
+if (input.files && input.files[0]) {
+
+var reader = new FileReader();
+
+reader.onload = function (e) {
+var img = document.getElementById('imagePrev');
+img.src = e.target.result;
+img.style.display = 'block';
+
+};
+
+reader.readAsDataURL(input.files[0]);
+}
+}
+	</script>
+{% endblock %}

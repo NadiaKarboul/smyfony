@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ ticket.getUser.getNom }}</title>
+    <style>
+        /* Styles CSS pour le document PDF */
+    body {
+    font-family: Arial, sans-serif;
+    font-size: 12pt;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    
+}
+        .header-bar,
+        .footer-bar {
+            background-color: red;
+            height: 20px;
+            width: 100%;
+            position: fixed;
+            left: 0;
+        }
+        .header-bar {
+  height: 40px;
+}
+        .header-bar {
+            top: 0;
+        }
+        .footer-bar {
+            bottom: 0;
+        }
+        .header-bar-text,
+        .footer-bar-text {
+            color: white;
+            font-weight: bold;
+            font-size: 10pt;
+            line-height: 20px;
+            text-align: center;
+        }
+        .header-bar-text {
+            position: absolute;
+            top: 0;
+            width: 100%;
+        }
+        .footer-bar-text {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+        h1 {
+            font-size: 16pt;
+            font-weight: bold;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+        .ticket-info {
+            margin-bottom: 40px;
+        }
+        .ticket-info dl {
+            margin: 0;
+        }
+        .ticket-info dt {
+            font-weight: bold;
+            display: inline-block;
+            width: 120px;
+        }
+        .ticket-info dd {
+            display: inline-block;
+            margin-left: 10px;
+        }
+        .ticket-description {
+            margin-top: 20px;
+        }
+        .ticket-description h2 {
+            font-size: 14pt;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .ticket-description p {
+            margin: 0;
+            line-height: 1.5;
+        }
+        .ticket-image {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .ticket-image img {
+            max-width: 100%;
+            max-height: 200px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header-bar">
+        <div class="header-bar-text">Drift&Race</div>
+    </div>
+
+    <h1>{{ ticket.getUser.getNom }}</h1>
+    <div class="ticket-info">
+        <dl>
+            <dt>Numéro de ticket :</dt>
+            <dd>{{ ticket.id }}</dd>
+        </dl>
+        <dl>
+            <dt>Date de Debut :</dt>
+            <dd>{{ ticket.getEvent.getDateDebut()|date("d/m/Y") }}</dd>
+        </dl>
+        <dl>
+            <dt>Date de Fin :</dt>
+            <dd>{{ ticket.getEvent.getDateFin()|date("d/m/Y") }}</dd>
+        </dl>
+        <dl>
+            <dt>Lieu :</dt>
+            <dd>{{ ticket.getEvent.getLieuEvent }}</dd>
+        </dl>
+    </div>
+    <div class="ticket-image">
+        <img src="C:\xampp\htdocs\images\qr_643f49f4af3279.54734484.png">
+    </div>
+
+    <div class="footer-bar">
+        <div class="footer-bar-text">Drift&Race</div>
+    </div>
+
+</body>
+</html>

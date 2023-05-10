@@ -1,0 +1,151 @@
+{% extends "homeadmin.html.twig" %}
+{% block body %}
+	<div
+		class="page-body">
+
+		<!-- New Product Add Start -->
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-12">
+					<div class="row">
+						<div class="col-sm-8 m-auto">
+							<div class="card">
+								<div class="card-body">
+									<div class="card-header-2">
+										<h5>Bonplan Information</h5>
+									</div>
+									{{form_start(f,{'attr': {'novalidate': 'novalidate', 'class':'theme-form theme-form-2 mega-form'}})}}
+
+
+									{% if form_errors(f.nom_bonplan) %}
+
+										<div class="alert alert-danger no-radius">
+											<strong>Danger!</strong>
+											{{ form_errors(f.nom_bonplan) }}</div>
+                                            {% endif %}
+										<div class="mb-4 row align-items-center">
+											<label class="form-label-title col-sm-3 mb-0">BonPlan Name</label>
+											<div class="col-sm-9">
+												{{ form_widget(f.nom_bonplan) }}
+											</div>
+										</div>
+										{% if form_errors(f.gouvernorat) %}
+
+											<div class="alert alert-danger no-radius">
+												<strong>Danger!</strong>
+												{{ form_errors(f.gouvernorat) }}</div>
+										{% endif %}
+										<div class="mb-4 row align-items-center">
+											<label class="form-label-title col-sm-3 mb-0">Gouvernorat</label>
+											<div class="col-sm-9">
+												{{ form_widget(f.gouvernorat) }}
+											</div>
+										</div>
+										{% if form_errors(f.ville) %}
+
+											<div class="alert alert-danger no-radius">
+												<strong>Danger!</strong>
+												{{ form_errors(f.ville) }}</div>
+										{% endif %}
+										<div class="mb-4 row align-items-center">
+											<label class="form-label-title col-sm-3 mb-0">City</label>
+											<div class="col-sm-9">
+												{{ form_widget(f.ville) }}
+											</div>
+										</div>
+										{% if form_errors(f.rue) %}
+
+											<div class="alert alert-danger no-radius">
+												<strong>Danger!</strong>
+												{{ form_errors(f.rue) }}</div>
+										{% endif %}
+										<div class="mb-4 row align-items-center">
+											<label class="form-label-title col-sm-3 mb-0">Street</label>
+											<div class="col-sm-9">
+												{{ form_widget(f.rue) }}
+											</div>
+										</div>
+										{% if form_errors(f.description) %}
+
+											<div class="alert alert-danger no-radius">
+												<strong>Danger!</strong>
+												{{ form_errors(f.description) }}</div>
+										{% endif %}
+										<div class="mb-4 row align-items-center">
+											<label class="form-label-title col-sm-3 mb-0">Description</label>
+											<div class="col-sm-9">
+												{{ form_widget(f.description) }}
+											</div>
+										</div>
+										{% if form_errors(f.type) %}
+
+											<div class="alert alert-danger no-radius">
+												<strong>Danger!</strong>
+												{{ form_errors(f.type) }}</div>
+										{% endif %}
+										<div class="mb-4 row align-items-center">
+											<label class="form-label-title col-sm-3 mb-0">Type</label>
+											<div class="col-sm-9">
+												{{ form_widget(f.type) }}
+											</div>
+										</div>
+										{# {{ form_errors(f.imageFile) }} #}
+										<div class="mb-4 row align-items-center">
+											<label class="col-sm-3 col-form-label form-label-title">Image</label>
+											<div class="col-sm-9">
+												{{ form_widget(f.imageFile,{'attr': {'onchange': 'previewImage(this)'}}) }}
+
+											</div>
+										</div>
+										<div class="mb-4 row align-items-center" style="
+																							    display: flex;
+																							    align-items: center;
+																							    justify-content: center;
+																							">
+
+											<img id="image-preview" src="#" alt="Selected Image" style="display: none; max-width: 200px;">
+
+										</div>
+										<div class="mb-4 row align-items-center" style="
+																							    display: flex;
+																							    align-items: center;
+																							    justify-content: center;
+																							">
+											{{ form_widget(f.save,{'attr': {'style':'width : 150px'} }) }}
+
+
+										</div>
+
+
+										{{form_end(f)}}
+									</div>
+								</div>
+
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- footer start-->
+			
+		</div>
+		<!-- Order section End -->
+	</div>
+	<script>
+		function previewImage(input) {
+if (input.files && input.files[0]) {
+var reader = new FileReader();
+
+reader.onload = function (e) {
+var img = document.getElementById('image-preview');
+img.src = e.target.result;
+img.style.display = 'block';
+};
+
+reader.readAsDataURL(input.files[0]);
+}
+}
+	</script>
+{% endblock %}

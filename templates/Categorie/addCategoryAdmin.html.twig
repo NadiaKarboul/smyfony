@@ -1,0 +1,66 @@
+{% extends 'homeadmin.html.twig' %}
+{% block body %}
+<div class="page-body">
+{{form_start(f)}}
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="col-sm-8 m-auto">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="card-header-2">
+                                                <h5>Category Information</h5>
+                                            </div>
+
+                                            <form class="theme-form theme-form-2 mega-form">
+                                                <div class="mb-4 row align-items-center">
+                                                    <label class="form-label-title col-sm-3 mb-0">Category Name</label>
+                                                    <div class="col-sm-9">
+                                                        <div class="form-group">
+                                                            {{ form_widget(f.nom_categorie, {'attr': {'class': 'form-control', 'placeholder': 'Category Name'}}) }}
+                                                            {{ form_errors(f.nom_categorie) }}
+                                                        </div>
+                                                       
+                                                    </div>
+                                                </div>
+                                                <div class="mb-4 row align-items-center">
+                                                    <label class="form-label-title col-sm-3 mb-0">Description</label>
+                                                    <div class="col-sm-9">
+                                                        <div class="form-group">
+                                                            {{ form_widget(f.description_categorie, {'attr': {'class': 'form-control', 'placeholder': 'Description'}}) }}
+                                                            {{ form_errors(f.description_categorie) }}
+                                                        </div>
+                                                       
+                                                    </div>
+                                                </div>
+                                            
+                                                <div class="mb-4 row align-items-center">
+                                                    <label class="form-label-title col-sm-3 mb-0">Type</label>
+                                                    <div class="col-sm-9">
+                                                        
+                                                        
+                                             {{ form_widget(f.type_categorie)}}
+
+                                                       
+                                                    </div>
+                                                </div>
+                                         
+                                               <div class="align-items-center btn btn-theme d-flex">
+                                                <div class="form-group">
+                                                    {{ form_widget(f.save, {'label': '<i data-feather=""></i>Save', 'label_html': true, 'attr': {'class': 'btn btn-primary'}}) }}
+                                                </div>
+                                               
+                                               </div>
+                                                
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+  {{form_end(f)}}
+</div>
+  {% endblock %}

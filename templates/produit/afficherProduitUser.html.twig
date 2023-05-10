@@ -1,0 +1,137 @@
+{% extends 'base-front.html.twig' %}
+
+{# On crée des variables personnalisées #}
+{% set queryParams = app.request.query.all %}
+{% set queryString = queryParams|filter((v,k)=>k != "page")|url_encode %}
+
+
+
+
+{% block body %}
+
+<!-- Content -->
+<div class="page-content bg-white"  >
+    <!-- inner page banner -->
+    <div class="dlab-bnr-inr overlay-black-middle" style="background-image:url(images/background/bg4.jpg);">
+        <div class="container">
+            <div class="dlab-bnr-inr-entry">
+                <h1 class="text-white">Shop</h1>
+            </div>
+        </div>
+    </div>
+    
+   
+    <!-- Breadcrumb row END -->
+</div>
+
+<div class="row justify-content-center" >
+    <h2 class="title">Filtrer par Categorie</h2>
+    <form id="filters">
+        {% for categorie in c %}
+        {# On vérifie si la catégorie est dans les paramètres #}
+        {% if queryParams is not empty and queryParams.categories is defined  %}
+            {% set checked = (categorie.id in queryParams.categories) ? "checked" : "" %}
+        {% else %}
+            {% set checked = "" %}
+        {% endif %}
+        <p style="display: inline-block;vertical-align: middle;"><input type="checkbox" name="categories[]" id="cat{{categorie.id}}" value="{{categorie.id}}" {{checked}}> <label for="cat{{categorie.id}}">{{categorie.nom_categorie}}</label></p>
+
+        {% endfor %}
+        <input type="hidden" name="page" value="{{pagenum}}">
+    </form>
+    
+    <div class="col-lg-7 align-self-center"   >
+        <div class="section-title text-center">
+         
+            <h6 class="sub-title double-line"><span></span>  Products </h6>
+            <h2 class="title">Our Popular Products</h2>
+            <p class="content">D&R is the Tunisian's number 1 supplier of Car Parts and products for the Drift fans and supporters ! With over 250+ products of hights quality </p>
+        </div>
+     
+    </div>
+    
+  <!-- contact area -->
+  <div class="section-full content-inner">
+    <!-- Product -->
+    <div class="container" id="content">
+        
+        <div class="row">
+            {% for i in p %}
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="item-box m-b10">
+                    <div class="item-img">
+                        <img src="http://localhost/images/{{i.getImage}}" alt=""/>
+                        <div class="item-info-in">
+                            <ul>
+                                <li><a href="#"><i class="ti-shopping-cart"></i></a></li>
+                                <li><a href="{{path('affichedetail',{'id':i.id})}}"><i class="ti-eye"></i></a></li>
+                                <li><a href="#"><i class="ti-heart"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="item-info text-center text-black p-a10">
+                        <h6 class="item-title"><a href="{{path('affichedetail',{'id':i.id})}}">{{i.nom_prod}}</a></h6>
+                       
+                        
+                        <p class="content">{{i.description_prod}}</p>
+                        <h4 class="item-price"><span class="text-primary">{{i.prix_prod}} Dt</span></h4>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+       
+        <div class="pagination">
+        {{ knp_pagination_render(p) }}
+        </div>
+        
+    </div>
+    </div>
+  </div>
+  </div>
+
+
+{% endblock %}
+{% block js %}
+<!-- JavaScript  files ========================================= -->
+
+<script src="{{asset('js/filters.js')}}"></script>
+<script src="{{asset('js/jquery.min.js')}}"></script><!-- JQUERY.MIN JS -->
+<script src="{{asset('plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script><!-- BOOTSTRAP.MIN JS -->
+<script src="{{asset('plugins/bootstrap-select/bootstrap-select.min.js')}}"></script><!-- FORM JS -->
+<script src="{{asset('plugins/bootstrap-touchspin/jquery.bootstrap-touchspin.js')}}"></script><!-- FORM JS -->
+<script src="{{asset('plugins/magnific-popup/magnific-popup.js')}}"></script><!-- MAGNIFIC POPUP JS -->
+<script src="{{asset('plugins/counter/waypoints-min.js')}}"></script><!-- WAYPOINTS JS -->
+<script src="{{asset('plugins/counter/counterup.min.js')}}"></script><!-- COUNTERUP JS -->
+<script src="{{asset('plugins/imagesloaded/imagesloaded.js')}}"></script><!-- IMAGESLOADED -->
+<script src="{{asset('plugins/masonry/masonry-3.1.4.js')}}"></script><!-- MASONRY -->
+<script src="{{asset('plugins/masonry/masonry.filter.js')}}"></script><!-- MASONRY -->
+<script src="{{asset('plugins/owl-carousel/owl.carousel.js')}}"></script><!-- OWL SLIDER -->
+<script src="{{asset('plugins/rangeslider/rangeslider.js')}}" ></script><!-- Rangeslider -->
+<script src="{{asset('js/custom.min.js')}}"></script><!-- CUSTOM FUCTIONS  -->
+<script src="{{asset('js/dz.carousel.min.js')}}"></script><!-- SORTCODE FUCTIONS  -->
+
+<script src="{{asset('plugins/lightgallery/js/lightgallery-all.js')}}"></script><!-- LIGHT GALLERY -->
+<script src="{{asset('js/dz.ajax.js')}}"></script><!-- CONTACT JS -->
+<script src="{{asset('plugins/switcher/js/switcher.js')}}"></script><!-- SWITCHER -->
+<!-- REVOLUTION JS FILES -->
+<script src="{{asset('plugins/revolution/js/jquery.themepunch.tools.min.js')}}"></script>
+<script src="{{asset('plugins/revolution/js/jquery.themepunch.revolution.min.js')}}"></script>
+<!-- Slider revolution 5.0 Extensions  (Load Extensions only on Local File Systems !  The following part can be removed on Server for On Demand Loading) -->
+<script src="{{asset('plugins/revolution/js/extensions/revolution.extension.actions.min.js')}}"></script>
+<script src="{{asset('plugins/revolution/js/extensions/revolution.extension.carousel.min.js')}}"></script>
+<script src="{{asset('plugins/revolution/js/extensions/revolution.extension.kenburn.min.js')}}"></script>
+<script src="{{asset('plugins/revolution/js/extensions/revolution.extension.layeranimation.min.js')}}"></script>
+<script src="{{asset('plugins/revolution/js/extensions/revolution.extension.migration.min.js')}}"></script>
+<script src="{{asset('plugins/revolution/js/extensions/revolution.extension.navigation.min.js')}}"></script>
+<script src="{{asset('plugins/revolution/js/extensions/revolution.extension.parallax.min.js')}}"></script>
+<script src="{{asset('plugins/revolution/js/extensions/revolution.extension.slideanims.min.js')}}"></script>
+<script src="{{asset('plugins/revolution/js/extensions/revolution.extension.video.min.js')}}"></script>
+<script src="{{asset('js/rev.slider.js')}}"></script>
+<script>
+jQuery(document).ready(function() {
+	'use strict';
+	dz_rev_slider_4();
+});	/*ready*/
+</script>
+
+{% endblock %}

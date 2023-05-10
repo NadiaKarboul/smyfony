@@ -1,0 +1,237 @@
+{% extends "base-front.html.twig" %}
+{% block body %}
+	<div
+		class="page-content bg-white">
+		<!-- inner page banner -->
+		<div class="dlab-bnr-inr overlay-black-middle" style="background-image:url(../images/background/bg4.jpg);"></div>
+		<!-- inner page banner END -->
+		<div class="content-area m-b30">
+			<div
+				class="container">
+				<!-- blog start -->
+				<div class="blog-post blog-single">
+					<div class="dlab-post-title ">
+						<h3 class="post-title">{{bonplan.0[0].getNomBonplan()}}</h3>
+					</div>
+					<div class="dlab-post-meta m-b20">
+						<ul>
+							<li class="post-author">
+								<i class="fas fa-user"></i>By
+								<a href="#">{{bonplan.0[0].getUser().getNom()}}
+									{{bonplan.0[0].getUser().getPrenom()}}</a>
+							</li>
+							<li class="post-comment">
+								<i class="fas fa-comments"></i>
+								<a href="#">{{feeds|length}}
+									Comments</a>
+							</li>
+						</ul>
+					</div>
+					<div
+						class="section-full bg-white content-inner-1">
+						<!-- About Company -->
+						<div class="container">
+							<div class="row m-b30">
+								<div class="col-lg-9 col-md-8">
+									<div class="row">
+										<div class="col-md-12 col-lg-12 col-sm-12">
+											<div class="dlab-box">
+												<div class="dlab-media">
+													<a href="#"><img style="height: 500px" src="http://localhost/images/{{bonplan.0[0].getImage()}}" alt=""></a>
+												</div>
+												<div class="dlab-info m-t30 ">
+													<h4 class="dlab-title m-t0">
+														{{bonplan.0[0].getNomBonplan()}}
+													</h4>
+													<h4 class="dlab-title m-t0">
+														Average   :
+														{{bonplan.0.avg_rating|number_format(1, '.', '')}}
+
+
+													</h4>
+													<p>{{bonplan.0.avg_rating|rating}}
+													</p>
+													<p>{{bonplan.0[0].getDescription()}}.
+													</p>
+												</div>
+
+											</div>
+
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-3 col-md-4 side-sticky">
+									<div class="icon-bx-wraper bx-style-1 p-a30 center m-b15">
+										<div class="icon-bx-sm text-primary bg-white radius border-2 m-b20">
+											<img src="http://localhost/images/{{bonplan.0[0].getUser().getImg()}}" style=" border-radius: 100%;height:100% ">
+										</div>
+										<div class="icon-content">
+											<h5 class="dlab-tilte text-uppercase">{{bonplan.0[0].getUser().getNom()}}
+												{{bonplan.0[0].getUser().getPrenom()}}</h5>
+											<div class="widget widget_getintuch">
+
+												<ul>
+
+													<li>
+														<i class="fas fa-phone-alt"></i>
+														<strong>phone
+														</strong>
+														+216
+														{{bonplan.0[0].getUser().getNumTel()}}
+														<br>
+													</li>
+													<li>
+														<i class="fas fa-envelope"></i>
+														<strong>email
+														</strong>
+														{{bonplan.0[0].getUser().getEmail()}}</li>
+												</ul>
+											</div>
+
+										</div>
+									</div>
+									<div class="widget widget_getintuch">
+										<h4 class="widget-title">Bonplan Info</h4>
+										<ul>
+											<li>
+												<i class="fas fa-map-marker-alt"></i>
+												<strong>address</strong>
+												{{bonplan.0[0].getGouvernorat()}}
+												<br/>
+												{{bonplan.0[0].getVille()}}
+												<br/>
+												{{bonplan.0[0].getRue()}}
+											</li>
+											<li>
+												<i class="fas fa-taxi"></i>
+												<strong>Type</strong>
+												{{bonplan.0[0].getType()}}</li>
+										</li>
+
+
+									</ul>
+								</div>
+							</div>
+						</div>
+
+					</div>
+					<!-- About Company END -->
+				</div>
+
+
+			</div>
+			<div class="clear " id="comment-list">
+				<div class="comments-area" id="comments">
+					<div class="dlab-divider bg-gray-dark">
+						<i class="icon-dot c-square"></i>
+					</div>
+
+					<h2 class="comments-title">{{feeds|length}}
+						Comments</h2>
+					<div
+						class="clearfix">
+						<!-- comment list END -->
+						<ol class="comment-list">
+							{% for item in feeds %}
+								<li class="comment">
+									<div class="comment-body">
+										<div class="comment-author vcard">
+											<img class="avatar photo" src="http://localhost/images/{{item.getUser().getImg()}}" alt="">
+											<cite class="fn">{{item.getUser().getNom()}}
+												{{item.getUser().getPrenom()}}
+											</cite>
+											<span class="says">says:</span>
+										</div>
+										<div
+											class="star-rating">
+											{# {% for i in range(0,4) %}
+																																		{% if i < item.getRate() %}
+																																			<i class="fas fa-star" data-alt="1" title="regular"></i>
+																																		{% else %}
+																																			<i class="far fa-star" data-alt="3" title="regular"></i>
+																						
+																																		{% endif %}
+																						
+																																	{% endfor %} #}
+											{% if item.getRate() >= 0 %}
+												{{item.getRate()|rating }}
+											{% endif %}
+
+
+										</div>
+										<p>
+											{{item.getCommentaire()}}
+										</p>
+										{% if item.getUser().getIdUser() == user.getIdUser() %}
+										<div style="position: absolute;top: 50px;right: 30px;margin-top: -5px;color: #213454;font-weight: 600;">
+
+											<a href="{{path('update_feedback',{'id':item.getId()}) }}">
+												<i class="fas fa-pencil" style="color:red;"></i>Update</a>
+										</div>
+										<div style="position: absolute;top: 80px;right: 30px;margin-top: -5px;color: var(--primary);font-weight: 600;">
+
+											<a href="{{path('delete_feedback',{'id':item.getId()}) }}">
+												<i class="fa-solid fa-trash-can" style="color: red;"></i>
+												Delete</a>
+										</div>
+										{% endif %}
+										
+									</div>
+								</li>
+							{% endfor %}
+
+						</ol>
+						<!-- comment list END -->
+						<!-- Form -->
+						<div id="review_form_wrapper">
+							<div id="review_form">
+								<div id="respond" class="comment-respond">
+									<h3 class="comment-reply-title" id="reply-title">Add a review</h3>
+
+									{{form_start(f,{'attr': {'novalidate': 'novalidate', 'class': 'comment-form'}})}}
+									<div class="comment-form-author">
+
+										<label>Rate
+											<span class="required">*</span>
+										</label>
+										{% if form_errors(f.rate) %}
+											<div class="alert alert-danger no-radius">
+												<strong>Danger!</strong>
+												{{ form_errors(f.rate) }}</div>
+										{% endif %}
+
+										{{ form_widget(f.rate) }}
+									</div>
+									<div class="comment-form-email">
+										<label>Report
+										</label>
+										{{ form_widget(f.report,{'attr': {'style':'width:30px;height:30px;opacity:0.9;' }}) }}
+									</div>
+
+									<div class="comment-form-comment">
+
+										<label>Your Review</label>
+										{% if form_errors(f.commentaire) %}
+											<div class="alert alert-danger no-radius">
+												<strong>Danger!</strong>
+												{{ form_errors(f.commentaire) }}</div>
+										{% endif %}
+										{{ form_widget(f.commentaire) }}
+									</div>
+									<div class="form-submit">
+										{{ form_widget(f.save,{'attr': {'class':'site-button'} }) }}
+									</div>
+									{{form_end(f)}}
+								</div>
+							</div>
+						</div>
+
+						<!-- Form END -->
+					</div>
+				</div>
+			</div>
+			<!-- blog END -->
+		</div>
+	</div>
+</div>
+<!-- Content END-->{% endblock %}

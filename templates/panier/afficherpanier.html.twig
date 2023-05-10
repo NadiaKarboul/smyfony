@@ -1,0 +1,94 @@
+{% extends 'base-front.html.twig' %}
+{% block titre%}
+<title>Panier</title>
+{% endblock %}
+{% block body%} 
+<div class="page-content bg-white">
+    <!-- inner page banner -->
+    <div class="dlab-bnr-inr overlay-black-middle" style="background-image:url({{ asset('images/background/slide11.jpg') }});">
+        <div class="container">
+            <div class="dlab-bnr-inr-entry">
+                <h1 class="text-white">Votre panier</h1>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumb row -->
+<div class="breadcrumb-row">
+    <div class="container">
+        <ul class="list-inline">
+            <li><a href="{{path('resume')}}">Accueil</a></li>
+            <li>Votre Panier</li>
+        </ul>
+    </div>
+</div>
+<!-- Breadcrumb row END -->
+<div class="section-full content-inner">
+    <!-- Product -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 m-b30">
+                <div class="table-responsive">
+                    <table class="table check-tbl">
+                        <thead class="text-left">
+    <tr>
+        <th>Image</th>
+        <th>Nom produit</th>
+        <th>Description produit</th>
+        <th>Prix</th>
+        <th colspan="2">Quantite</th>
+        <th>Sous monatant</th>
+        
+    </tr>
+</thead>
+<tbody>
+    <tr class="alert"{% for p in produits %}>
+        <td class="product-item-img"><img src="http://localhost/images/{{p.getProduit().getImage()}}" alt=""></td>
+        <td class="product-item-name">{{p.getProduit().getNomProd()}}</td>
+        <td class="product-item-name">{{p.getProduit().getDescriptionProd()}}</td>
+        <td class="product-item-price">{{p.getProduit().getPrixProd()}} DT</td>
+        <td class="product-item-quantity" id="quantite">{{p.getQuantite()}} </td>
+        <td class="product-item-quantity"><div class="form-group">
+            {#<a class="site-button button-sm m-r15" onclick="updateQuantitePlusUn({{p.getId()}})">+</a>#}
+            <a class="site-button button-sm m-r15" onclick="showNotification('Mise à jour', 'La qantité a été mise à jour avec succès')" href="{{path('plus1',{'id':p.getId()}) }}">+</a>
+        </div><div class="form-group">
+            {#  <a class="site-button button-sm m-r15" onclick="updateQuantiteMoinsUn({{p.getId()}})">-</a>#}
+           <a class="site-button button-sm m-r15" onclick="showNotification('Mise à jour', 'La qantité a été mise à jour avec succès')" href="{{path('moins1',{'id':p.getId()}) }}">-</a>
+        </div></td>
+        <td class="product-item-totle" id="sous_total" >{{p.getProduit().getPrixProd()*p.getQuantite()}} DT</td>
+        <td class="product-item-close"><a id="remove-from-cart-btn" onclick="showNotification('Supprimer', 'Produit supprimé du panier avec succès')" href="{{path('supprimer_ligne_panier',{'id':p.getId()}) }}" class="fas fa-times" ></a></td>
+        {#<td class="product-item-name"><a class="site-button m-r15" href="{{path('supprimer_ligne_panier',{'id':p.getId()}) }}"> Supprimer</a></td>#}
+        <tr {%  else  %}> <h1>Votre panier est vide </h1></tr>
+    </tr {% endfor %}>
+    <tr class="alert">
+        <td colspan="5" class="product-item-name" style="text-align: center;">Montant total de votre panier</td>
+        <td class="product-item-price">{{total}} DT </td>
+    </tr>
+        <tr class="alert">
+        <td class="product-item-quantity" colspan="2" style="text-align: center;">
+        <div class="form-group">
+            <a class="site-button m-r15" href="{{path('vider_panier',{'id':user.getIdUser()}) }}">Vider Panier</a>
+        </div>
+    </td>
+    <td class="product-item-quantity" colspan="2" style="text-align: center;">
+        <div class="form-group">
+            <a  class="site-button m-r15" href="{{path('passer_commande',{'idPanier':user.getIdUser(),'total':total})}}">Passer Commande</a>
+        </div>
+    </td>
+    <td class="product-item-quantity" colspan="2" style="text-align: center;">
+        <div class="form-group">
+            <a  class="site-button m-r15" href="{{path('afficher_commandes',{'idPanier':user.getIdUser()})}}">Consulter Commandes</a>
+        </div>
+    </td>
+</tr>
+</tbody>  
+</table>
+
+</div>
+</div>
+</div>
+</div>
+<!-- Product END -->
+</div>
+
+{% endblock %}

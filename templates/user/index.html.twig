@@ -1,0 +1,59 @@
+{% extends 'base-front.html.twig' %}
+
+
+
+{% block body %}
+<div class="page-content bg-white"  >
+    <!-- inner page banner -->
+    <div class="dlab-bnr-inr overlay-black-middle" style="background-image:url(images/background/bg4.jpg);">
+        <div class="container">
+            <div class="dlab-bnr-inr-entry">
+                <h1 class="text-white">Profile</h1>
+            </div>
+        </div>
+    </div>
+
+</div>
+    <div>
+
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>NumTel</th>
+                <th>Adresse</th>
+            
+                <th>Email</th>
+                <th>image</th>
+                <th>Age</th>
+                <th>actions</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr>
+                <td>{{ user.nom }}</td>
+                <td>{{ user.prenom }}</td>
+                <td>{{ user.numTel }}</td>
+                <td>{{ user.adresse }}</td>
+       
+                <td>{{ user.email }}</td>
+                <td>{{ user.cv }}</td>
+                <td>{{ user.age }}</td>
+
+                <td>
+                    <a href="{{ path('app_user_show', {'idUser': user.idUser}) }}">show</a>
+                    <a href="{{ path('app_user_edit', {'idUser': user.idUser}) }}">edit</a>
+                </td>
+            </tr>
+
+
+            </tbody>
+        </table>
+    </div>
+
+
+
+{% endblock %}

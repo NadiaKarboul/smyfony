@@ -1,0 +1,191 @@
+{% extends "base-front.html.twig" %}
+{% block body %}
+	<div
+		class="page-content bg-white">
+		<!-- inner page banner -->
+		<div class="dlab-bnr-inr overlay-black-middle" style="background-image:url(images/background/bg4.jpg);">
+			<div class="container">
+				<div class="dlab-bnr-inr-entry">
+					<h1 class="text-white">Bonplan</h1>
+				</div>
+			</div>
+		</div>
+		<!-- inner page banner END -->
+		<!-- Breadcrumb row -->
+		<div class="breadcrumb-row">
+			<div class="container">
+				<ul class="list-inline">
+					<li>
+						<a href="#">Home</a>
+					</li>
+					<li>All Bonplan</li>
+				</ul>
+			</div>
+		</div>
+		<!-- Breadcrumb row END -->
+		<div class="content-area">
+			<div class="container">
+				<div
+					class="row">
+					<!-- left part start -->
+					<div class="col-lg-9 col-md-7 col-sm-6">
+						<div
+							class="clearfix">
+							<!-- blog grid -->
+							<div id="masonry" class="row dlab-blog-grid-3">
+								{% if allBonplan|length != 0 %}
+									{% for item in allBonplan %}
+										<div class="post card-container col-lg-4 col-md-6 col-sm-12">
+											<div class="blog-post blog-grid date-style-2">
+												<div class="dlab-post-media dlab-img-effect zoom-slow">
+													<a href="#"><img style="height:197.14px " src="http://localhost/images/{{item.0.getImage()}}" alt=""></a>
+												</div>
+												<div class="dlab-post-info">
+													<div class="dlab-post-title ">
+														<h3 class="post-title">
+															<a href="#">{{item.0.getNomBonplan()}}</a>
+														</h3>
+													</div>
+													<div class="dlab-post-meta ">
+														<ul>
+															<li class="post-author">
+																<i class="fas fa-user"></i>By
+																<a href="#">{{item.0.getUser().getNom()}}
+																	{{item.0.getUser().getPrenom()}}</a>
+															</li>
+															<li class="post-comment">
+																<i class="fas fa-comments"></i>
+																<a href="#">{{item.count_feeds}}</a>
+															</li>
+															{% if item.0.getUser().getIdUser() == user.getIdUser() %}
+															<li class="post-comment">
+																<i class="fa-sharp fa-solid fa-pen" style="color: #ff0000;"></i>
+																<a href="{{path('updateBonplanUser',{'id':item.0.getId()}) }}">update</a>
+															</li>
+															<li class="post-comment">
+																<i class="fa-solid fa-trash-can" style="color: #ff0000;"></i>
+																<a href="{{path('delete_Bonplan',{'id':item.0.getId()}) }}">delete</a>
+															</li>
+															{% endif %}
+															
+														</ul>
+													</div>
+													<div class="dlab-post-text">
+														<p>{{item.0.getDescription()}}</p>
+													</div>
+													<div class="dlab-post-text" style="text-align:center">
+														<p>{{item.avg_rating|rating }}
+															{{item.avg_rating|number_format(1, '.', '')}}
+														</p>
+													</div>
+													<div class="dlab-post-readmore">
+														<a href="{{path('detail_bonplan',{'id':item.0.getId()}) }}" title="READ MORE" rel="bookmark" class="site-button-link">READ MORE<i class="fas fa-angle-double-right"></i>
+														</a>
+													</div>
+
+												</div>
+											</div>
+										</div>
+									{% endfor %}
+
+								{% else %}
+									<h1 style="
+									 top: 80%;
+									left: 25%;
+									position: absolute;">
+									<i class="fa-solid fa-circle-exclamation"></i>   	Not found
+									</h1>
+								{% endif %}
+
+
+							</div>
+							<!-- blog grid END -->
+
+						</div>
+						<div class=" pagination">
+							{{ knp_pagination_render(allBonplan) }}
+						</div>
+					</div>
+					<!-- left part END -->
+					<!-- Side bar start -->
+					<div class="col-lg-3 col-md-5 col-sm-6">
+						<aside class="side-bar">
+							<div class="widget">
+								<h4 class="widget-title">Suggest your bonplan</h4>
+								<div class="search-bx">
+
+									<div class="input-group">
+										<a href="{{ path('addBonplan') }}">
+											<button class="site-button outline red m-r15" type="button">Suggest your bonplan</button>
+										</a>
+									</div>
+
+
+								</div>
+							</div>
+							<div class="widget">
+								<h4 class="widget-title">Search</h4>
+								<div class="search-bx">
+									<form role="search" method="POST">
+										<div class="input-group">
+											<input name="search" type="text" class="form-control" placeholder="Write your text" id="search">
+											<span class="input-group-btn">
+												<button type="submit" value="search" class="site-button">
+													<i class="fas fa-search"></i>
+												</button>
+											</span>
+										</div>
+
+									</form>
+								</div>
+							</div>
+							<div class="widget recent-posts-entry">
+								<h4 class="widget-title">Recent Posts</h4>
+								<div class="widget-post-bx">
+									{% if recent|length >= 3 %}
+										{% for item in recent %}
+											{% if loop.index > recent|length - 3 %}
+												<div class="widget-post clearfix">
+													<div class="dlab-post-media">
+														<img style="height:72px" src="http://localhost/images/{{item.0.getImage()}}" width="200" height="143" alt="">
+													</div>
+													<div class="dlab-post-info">
+														<div class="dlab-post-header">
+															<h6 class="post-title">
+																<a href="#">{{item.0.getNomBonplan()}}</a>
+															</h6>
+														</div>
+														<div class="dlab-post-meta">
+															<ul>
+																<li class="post-author">By
+																	<a href="#">{{item.0.getUser().getNom()}}</a>
+																</li>
+																<li class="post-comment">
+																	<i class="fas fa-comments"></i>
+																	{{item.count_feeds}}</li>
+															</ul>
+														</div>
+													</div>
+												</div>
+											{% endif %}
+
+										{% endfor %}
+
+
+									{% endif %}
+
+								</div>
+							</div>
+
+
+						</aside>
+					</div>
+					<!-- Side bar END -->
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Left & right section END -->
+	<!-- Content END-->
+{% endblock %}
+{% block script %}{% endblock script %}

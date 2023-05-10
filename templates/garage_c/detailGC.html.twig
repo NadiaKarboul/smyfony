@@ -1,0 +1,220 @@
+
+{% extends 'homeadmin.html.twig' %}
+{% block body %}
+
+
+            <!-- Order Tracking Seation starts-->
+            
+            <div class="page-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="title-header option-title">
+                                                <h5>Detail Garage </h5>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12 overflow-hidden">
+                                                    <div class="order-left-image">
+                                                        <div class="tracking-product-image">
+                                                            
+                                                                <img src="http://localhost/images/{{g.getImage}}"  class="img-fluid w-100 blur-up lazyload" alt="">
+                                                        </div>
+
+                                                        <div class="order-image-contain">
+                                                            <h4>{{g.getNomGarage}}</h4>
+                                                            <div class="tracker-number">
+                                                                <p>Adresse : <span>{{g.getAdresse}}</span></p>
+                                                                <p>Numero: <span>{{g.getNumero}}</span></p>
+                                                                <p>taux de reduction: <span>{{g.getTauxDeReduction}}</span></p>
+                                                            </div>
+                                                           
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                               
+
+                                                <div class="col-12 overflow-visible">
+                                                    <div class="tracker-table">
+                                                        <div class="table-responsive">
+                                                            <table class="table">
+                                                                <thead>
+                                                                    <tr class="table-head">
+                                                                        <th scope="col">Pannes</th>
+                                                                        <th scope="col">Prix</th>
+                                                                       
+                                                                    </tr>
+                                                                </thead>
+
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <h6>panne_moteur</h6>
+                                                                        </td>
+                                                                        <td>
+                                                                            <h6> {{g.getPanneMoteur}}</h6>
+                                                                        </td>
+                                                                        
+                                                                    </tr>
+
+                                                                    <tr>
+                                                                        <td>
+                                                                            <h6>Pompe A Eau</h6>
+                                                                        </td>
+                                                                        <td>
+                                                                            <h6> {{g.getPompeAEau}}</h6>
+                                                                        </td>
+                                                                       
+                                                                    </tr>
+
+                                                                    <tr>
+                                                                        <td>
+                                                                            <h6>Patin</h6>
+                                                                        </td>
+                                                                        <td>
+                                                                            <h6>{{g.getPatin}}</h6>
+                                                                        </td>
+                                                                        
+                                                                    </tr>
+
+                                                                    <tr>
+                                                                        <td>
+                                                                            <h6>Essuie Glace</h6>
+                                                                        </td>
+                                                                        <td>
+                                                                            <h6>{{g.getEssuieGlace}}</h6>
+                                                                        </td>
+                                                                       
+                                                                    </tr>
+
+                                                                    <tr>
+                                                                        <td>
+                                                                            <h6>Radiateur</h6>
+                                                                        </td>
+                                                                        <td>
+                                                                            <h6>{{g.getRadiateur}}</h6>
+                                                                        </td>
+                                                                        
+                                                                    </tr>
+
+                                                                    <tr>
+                                                                        <td>
+                                                                            <h6>Ventilateur</h6>
+                                                                        </td>
+                                                                        <td>
+                                                                            <h6> {{g.getVentilateur}}</h6>
+                                                                        </td>
+                                                                        
+                                                                    </tr>
+
+                                                                    <tr>
+                                                                        <td>
+                                                                            <h6>Duride</h6>
+                                                                        </td>
+                                                                        <td>
+                                                                            <h6> {{g.getDuride}}</h6>
+                                                                        </td>
+                                                                        
+                                                                    </tr>
+
+                                                                    <tr>
+                                                                        <td>
+                                                                            <h6>Fuite D'Huile</h6>
+                                                                        </td>
+                                                                        <td>
+                                                                            <h6> {{g.getFuiteDHuile}}</h6>
+                                                                        </td>
+                                                                        
+                                                                    </tr>
+
+                                                                    <tr>
+                                                                        <td>
+                                                                            <h6>Vidange</h6>
+                                                                        </td>
+                                                                        <td>
+                                                                            <h6> {{g.getVidange}}</h6>
+                                                                        </td>
+                                                                        
+                                                                    </tr>
+
+                                                                    <tr>
+                                                                        <td>
+                                                                            <h6>Filtre</h6>
+                                                                        </td>
+                                                                        <td>
+                                                                            <h6> {{g.getFiltre}}</h6>
+                                                                        </td>
+                                                                        
+                                                                    </tr>
+
+                                                                    <tr>
+                                                                        <td>
+                                                                            <h6>Batterie</h6>
+                                                                        </td>
+                                                                        <td>
+                                                                            <h6>{{g.getBatterie}}</h6>
+                                                                        </td>
+                                                                        
+                                                                    </tr>
+
+                                                                    <tr>
+                                                                        <td>
+                                                                            <h6>Amortisseur</h6>
+                                                                        </td>
+                                                                        <td>
+                                                                            <h6>  {{g.getAmortisseur}}</h6>
+                                                                        </td>
+                                                                        
+                                                                    </tr>
+
+                                                                    <tr>
+                                                                        <td>
+                                                                            <h6>Frein Main</h6>
+                                                                        </td>
+                                                                        <td>
+                                                                            <h6>  {{g.getFreinMain}}</h6>
+                                                                        </td>
+                                                                        
+                                                                    </tr>
+
+                                                                    <tr>
+                                                                        <td>
+                                                                            <h6>Feu D'Eclairage</h6>
+                                                                        </td>
+                                                                        <td>
+                                                                            <h6> {{g.getFeuDEclairage}}</h6>
+                                                                        </td>
+                                                                        
+                                                                    </tr>
+
+                                                                
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer text-end border-0 pb-0 d-flex justify-content-end">
+                                            <form action="{{path('modifierGC',{'id':g.getId}) }}"><button class="btn btn-primary me-3">Modifier</button>
+                                           <br>
+                                            <a href="/afficheGC" class="btn btn-outline">Retour<a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Container-fluid Ends-->
+
+              
+    
+
+   
+  {% endblock %}
+
